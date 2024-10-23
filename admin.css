@@ -1,0 +1,179 @@
+nav {
+    float: left;
+    margin-right: 50px;
+  }
+
+  /* .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+   */
+ 
+  .nav-links li {
+    margin: 0 10px;
+    list-style: none;
+  }
+  
+  .nav-links li a {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links li a:hover {
+    color: #f90;
+  }
+  .hero-image img{
+       max-width: 500px;
+  }
+  .hero {
+    margin-left: 300px;
+    background-color: #f2f2f2;
+    padding: 20px 100px;
+    display: flex;
+    align-items: center;
+    width: 65%;
+
+  }
+  
+  .hero-text {
+    margin-right: 50px;
+  }
+  
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+  
+  .hero-image {
+    flex: 1;
+  }
+  
+.menu{
+    width: 100%;
+    padding: 10px;
+    margin: 2px 0;
+    border: rgb(203, 182, 182) solid 1px;
+}
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  /* _________ */
+  .brcl{
+    background-color: rgb(61, 61, 241);
+    color: aliceblue;
+    border: rgb(59, 123, 202);
+    border-radius: 22px;
+    padding: 5px 5px;
+    width: 50px; height:30px;
+    margin-left: 5px;
+}
+.brcl1{
+    background-color: rgb(241, 61, 73);
+    color: aliceblue;
+    border: rgb(202, 59, 59);
+    border-radius: 22px;
+    padding: 5px 5px;
+    width: 100px; height:50px;
+
+}
+.sae{
+    border-radius: 5px;
+    height: 30px;
+}
+.scc{
+  border-radius: 5px;
+  height: 35px;
+  cursor: pointer;
+  background-color: rgb(80, 87, 117);
+  color: aliceblue;
+}
+.brcl2{
+    background-color: rgb(241, 130, 61);
+    color: aliceblue;
+    border: rgb(202, 161, 59);
+    border-radius: 22px;
+    padding: 5px 5px;
+    width: 50px; height:30px;
+}
+.brcl3{
+  background-color: rgb(9, 110, 31);
+  color: aliceblue;
+  border: rgb(67, 169, 42);
+  border-radius: 22px;
+  padding: 5px 5px;
+  width: 50px; height:30px;
+}
+th{
+    background-color: rgb(87, 190, 242);
+    color: aliceblue;
+    text-transform: uppercase;
+}
+.bangchinh th{
+    padding: 10px 5px;
+    border: 1px solid rgb(105, 102, 102);
+}
+.bangchinh td{
+    padding: 10px ;
+    border: 1px solid rgb(111, 108, 108);
+}
+
+.div1{
+    text-transform: uppercase;
+    color: rgb(16, 16, 16);
+    height: 50px;
+   
+    font-size: 30px;
+    font-weight: 4;
+}
+.search-form{
+    margin-bottom: 130px;
+    margin-top: 10px;
+}
+/* css cho admin */
+.header {
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.header .user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .user-info a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 30px;
+  font-size: 16px;
+
+}
+
+.header .user-info p {
+  color: #fff;
+  font-weight: bold;
+  margin-right: 20px;
+  font-size: 16px;
+}
