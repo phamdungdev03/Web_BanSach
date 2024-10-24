@@ -77,17 +77,16 @@
 
 
 	</header>
-	<div class="sidebar">
-		<!-- <p style="font-size: 16px;">DANH MỤC SẢN PHẨM</p> -->
+	<!-- <div class="sidebar">
 		<i>Danh mục sản phẩm</i>
-		<a href="dtiphone.php" class="active">iPhone</a>
-		<a href="dtsamsung.php">Samsung</a>
-		<a href="dtoppo.php">Oppo</a>
-		<a href="dtxiaomi.php">Xiaomi</a>
-		<a href="dtvivo.php">Vivo</a>
-	</div>
+        <a href="dtiphone.php" class="active">iPhone</a>
+        <a href="dtsamsung.php">Samsung</a>
+        <a href="dtoppo.php">Oppo</a>
+        <a href="dtxiaomi.php">Xiaomi</a>
+        <a href="dtvivo.php">Vivo</a>
+    </div>
 	<div class="container">
-
+		
 		<main>
 			<div class="banner">
 				<div class="slideshow-container">
@@ -141,49 +140,49 @@
 
 
 			<div class="products">
-				<?php
-
-				$result = mysqli_query($conn, $sql);
-
-				while ($row = mysqli_fetch_assoc($result)) {
-					$ma = $row["product_id"];
-					$ten = $row["product_name"];
-					$anh = $row["product_image"];
-					$gia = $row["price"];
-					$parsed_gia = number_format($gia, 0, ",", ",");
-				?>
-					<div class="product">
-						<a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
-							<img src="./hinh_anh/didong/<?php echo $anh ?>" alt="iPhone">
-						</a>
-						<a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
-							<h2><?php echo $ten ?></h2>
-						</a>
-
-						<p><?php echo $parsed_gia ?>₫</p>
-						<button>
-							<a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>" class="btn">Xem chi tiết</a>
-						</button>
-
-					</div>
-
-				<?php  } ?>
+			<?php 
+			 
+			 $result = mysqli_query($conn, $sql); 
+				
+        while($row = mysqli_fetch_assoc($result)) {
+            $ma = $row ["product_id"];
+            $ten = $row["product_name"];
+        	$anh = $row["product_image"];
+        	$gia = $row["price"];
+			$parsed_gia = number_format($gia, 0, ",", ",");
+   			 ?>
+				<div class="product">
+					<a href="./chitietsanpham.php?product_id=<?php echo $ma;?>">
+						<img src="./hinh_anh/didong/<?php echo $anh?>" alt="iPhone">
+					</a>
+					<a href="./chitietsanpham.php?product_id=<?php echo $ma;?>">
+							<h2><?php echo $ten?></h2>
+					</a>
+					
+					<p><?php echo $parsed_gia?>₫</p>
+					<button>
+						<a href="./chitietsanpham.php?product_id=<?php echo $ma;?>" class="btn">Xem chi tiết</a>
+					</button>
+					
+            </div>
+				
+				<?php  }?>
+				</div>
 			</div>
+		</main>
+	
 	</div>
-	</main>
-
-	</div>
-	<footer>
+	<footer >
 		<div class="footer-ct">
-			<p>Nguyễn Phi Hùng - 10/08/2002 </p>
-			<p>Website bán điện thoại di động &copy; 2023</p>
+				<p>Nguyễn Phi Hùng - 10/08/2002 </p>
+				<p>Website bán điện thoại di động &copy; 2023</p>
 		</div>
-
+		
 	</footer>
-
-
+		
+	
 	<script src="script.js">
-
+		
 	</script>
 </body>
 

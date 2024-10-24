@@ -8,17 +8,14 @@ body {
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    color: rgba(209, 202, 202, 0.151);
+    /* color: rgba(209, 202, 202, 0.151); */
 }
- 
- 
-
-
 
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 20px;
+  /* background: #B5DCE8; */
 }
 .header-container{
   height: 70px; ;
@@ -257,31 +254,11 @@ nav a {
   color: #0040e1;
 }
 .product p {
-  
   overflow: hidden;
   font-size: 14px;
   color: #e10c00;
   vertical-align: middle;
   margin-right: 10px;
-}
-
-footer {
-	padding: 20px 0;
-  background-color: #9e9e9e;
-  height: 70px;
-
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.footer-ct{
-  margin: 0 auto;
-	padding: 0 20px;
-  display: flex;
-	color: #fff;
-  justify-content: space-between;
-   max-width: 1200px;
-   align-items: center;
 }
 
 /* Menu trái */
