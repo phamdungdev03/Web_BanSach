@@ -76,17 +76,15 @@
 
 			
 	</header>
-	<div class="sidebar">
-		<!-- <p style="font-size: 16px;">DANH MỤC SẢN PHẨM</p> -->
+	<!-- <div class="sidebar">
 		<i>Danh mục sản phẩm</i>
         <a href="dtiphone.php" class="active">iPhone</a>
         <a href="dtsamsung.php">Samsung</a>
         <a href="dtoppo.php">Oppo</a>
         <a href="dtxiaomi.php">Xiaomi</a>
         <a href="dtvivo.php">Vivo</a>
-    </div>
+    </div> -->
 	<div class="container">
-		
 		<main>
 			<div class="banner">
                 <div class="slideshow-container">
@@ -170,19 +168,12 @@
 				</div>
 			</div>
 		</main>
-	
 	</div>
-	<footer >
-		<div class="footer-ct">
-				<p>Nguyễn Phi Hùng - 10/08/2002 </p>
-				<p>Website bán điện thoại di động &copy; 2023</p>
-		</div>
-		
-	</footer>
-		
-	
-	<script src="script.js">
-		
-	</script>
+
+	<?php 
+		require("./footer.php"); 
+	?>
+	 
+	<script src="script.js"></script>
 </body>
 </html>

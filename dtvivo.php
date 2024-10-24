@@ -179,13 +179,12 @@
 		</main>
 	
 	</div>
-	<footer>
+	<!-- <footer>
 		<div class="footer-ct">
 				<p>Nguyễn Phi Hùng - 10/08/2002 </p>
 				<p>Website bán điện thoại di động &copy; 2023</p>
 		</div>
-		
-	</footer>
+	</footer> -->
 	<script src="script.js"></script>
 </body>
 </html>

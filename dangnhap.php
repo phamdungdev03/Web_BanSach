@@ -93,12 +93,12 @@
   </div>
 
 </div>
-<footer style ="bottom: 0; height:  103px; ">
+<!-- <footer style ="bottom: 0; height:  103px; ">
     <div class="footer-ct" >
             <p>Nguyễn Phi Hùng - 10/08/2002 </p>
             <p>Website bán điện thoại di động &copy; 2023</p>
     </div>
-</footer>
+</footer> -->
 </body>
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
