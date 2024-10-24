@@ -40,7 +40,7 @@ header {
   z-index: 999;
 
 }
-/* 
+
 input[type=text] {
   padding: 10px;
   border: 1px solid #37353595;
@@ -66,7 +66,7 @@ input[type=submit]:hover {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-} */
+}
 
 /* Banner __________________________________________________*/
 .banner img {
@@ -422,14 +422,13 @@ nav a {
   border: 0;
 }
 
-input[type=text] {
+.nav-search form input[type=text] {
   width: 80% !important;
   padding-left: 10px !important;
   margin-right: 5px;
-  margin-bottom: 0 !important;
 }
 
-input[type=submit] {
+.nav-search form input[type=submit] {
   width: 20% !important;
   cursor: pointer;
 }

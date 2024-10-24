@@ -12,7 +12,7 @@
         <div class="nav-search">
             <?php
             include 'config.php';
-            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, 3366);
+            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 
             if (isset($_GET["search1"]) && !empty($_GET["search1"])) {
                 $key = trim($_GET["search1"]);
