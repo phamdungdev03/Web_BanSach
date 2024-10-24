@@ -6,100 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập - Đăng ký</title>
     <link rel="stylesheet" href="./dangnhap.css">
-    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://fontawesome.com/v5/icons/facebook-f?f=brands&s=solid">
-    <link rel="shortcut icon" href="./hinh_anh/logomb.png" />
 </head>
 
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.php"><img src="./hinh_anh/logomb.png" alt="logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Trang chủ</a></li>
-                    <li><a href="sanpham.php">Sản phẩm</a></li>
-                    <li><a href="giohang.php">Liên hệ</a></li>
-                </ul>
-            </nav>
-
-            <div class="cart">
-                <a href="#"><img src="./hinh_anh/logogiohang.png" alt="Giỏ hàng"></a>
-            </div>
-            <div class="dangnhap">
-                <a href="dangnhap.php"><img src="./hinh_anh/logodangnhap.png" alt="Đăng nhập"></a>
-            </div>
-
-        </div>
-
-    </header>
-    <div class="chinh">
-
-
-        <h2>Đăng nhập/Đăng ký</h2>
+    <div class="main">
         <div class="containerr" id="containerr">
             <div class="form-container sign-up-container">
                 <form action="xulydangky.php" method="POST" name="myForm" onsubmit="return validateForm()">
-
-                    <h1>Tạo tài khoản</h1>
-                    <input type="text" name="ten" placeholder="Họ và tên" />
-                    <input type="text" name="sdt" placeholder="Số điện thoại" />
-                    <div>
-                        <select id="city" name="city">
-                            <option value="" name="city" selected>Chọn tỉnh thành</option>
-                        </select>
-
-                        <select id="district" name="district">
-                            <option value="" name="district" selected>Chọn quận huyện</option>
-                        </select>
-
-                        <select id="ward" name="ward">
-                            <option value="" name="ward" selected>Chọn phường xã</option>
-                        </select>
-
-
-                    </div>
-                    <input type="text" name="diachicuthe" placeholder="Địa chỉ cụ thể" />
-                    <input type="email" name="email" placeholder="Email" />
-                    <input type="text" name="tendangnhap" placeholder="Tên đăng nhập" />
-                    <input type="password" name="matkhau" placeholder="Mật khẩu" />
-                    <input type="password" name="xnmatkhau" placeholder="Xác nhận mật khẩu" />
-                    <input class="brcl" type="submit" id="btn" name="btnSavedk" value="ĐĂNG KÝ">
+                    <h2 class="title">Tạo tài khoản</h2>
+                    <input type="text" name="ten" class="input" placeholder="Họ và tên" />
+                    <input type="text" name="sdt" class="input"  placeholder="Số điện thoại" />
+                    <input type="text" name="diachicuthe" class="input"  placeholder="Địa chỉ cụ thể" />
+                    <input type="email" name="email" class="input"  placeholder="Email" />
+                    <input type="text" name="tendangnhap" class="input"  placeholder="Tên đăng nhập" />
+                    <input type="password" name="matkhau" class="input"  placeholder="Mật khẩu" />
+                    <input type="password" name="xnmatkhau" class="input"  placeholder="Xác nhận mật khẩu" />
+                    <input class="button_submit" type="submit" class="input"  id="btn" name="btnSavedk" value="ĐĂNG KÝ">
                 </form>
             </div>
             <div class="form-container sign-in-container">
                 <form action="xulydangnhap.php" method="POST">
-                    <h1>Đăng nhập</h1>
-                    <input type="text" name="username" placeholder="Email" />
-                    <input type="password" name="password" placeholder="mật khẩu" />
-                    <input class="brcl" type="submit" id="btn" name="login" value="ĐĂNG NHẬP">
+                    <h2 class="title">Đăng nhập</h2>
+                    <div>
+                        <label class="label">UserName: </label>
+                        <input type="text" name="username"  id="username" class="input" placeholder="John" required />
+                    </div>
+
+                    <div>
+                        <label for="password" class="label">Password: </label>
+                        <input type="password" name="password"  id="password" class="input" placeholder="*********" required />
+                    </div>
+
+                    <input class="button_submit" type="submit" id="btn" name="login" value="ĐĂNG NHẬP">
                 </form>
             </div>
             <div class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">
-                        <h1>Chào mừng trở lại!</h1>
+                        <h2>Chào mừng trở lại!</h2>
                         <p>Để giữ kết nối với chúng tôi, vui lòng đăng nhập bằng thông tin cá nhân của bạn</p>
                         <button class="ghost" id="signIn">Đăng nhập</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <h1>Chào bạn!</h1>
-                        <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
+                        <h2>Chào bạn!</h2>
+                        <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình mua sách với chúng tôi</p>
                         <button class="ghost" id="signUp">Đăng ký</button>
                     </div>
                 </div>
             </div>
         </div>
-
-</div>
-<footer style ="bottom: 0; height:  103px; ">
-    <div class="footer-ct" >
-            <p>Nguyễn Phi Hùng - 10/08/2002 </p>
-            <p>Website bán điện thoại di động &copy; 2023</p>
     </div>
-</footer>
+
 </body>
 
 </html>

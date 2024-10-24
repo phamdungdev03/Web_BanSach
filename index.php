@@ -26,7 +26,7 @@
 			<div>
 				<?php
 				include 'config.php';
-				$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+				$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME,3366);
 
 				if (isset($_GET["search"]) && !empty($_GET["search"])) {
 					$key = trim($_GET["search"]);
@@ -150,6 +150,7 @@
         	$anh = $row["product_image"];
         	$gia = $row["price"];
 			$parsed_gia = number_format($gia, 0, ",", ",");
+		}
    			 ?>
 				<div class="product">
 					<a href="./chitietsanpham.php?product_id=<?php echo $ma;?>">
@@ -166,20 +167,10 @@
 					
             </div>
 				
-				<?php  }?>
-				</div>
 			</div>
 		</main>
 	
 	</div>
-	<footer >
-		<div class="footer-ct">
-				<p>Nguyễn Phi Hùng - 10/08/2002 </p>
-				<p>Website bán điện thoại di động &copy; 2023</p>
-		</div>
-		
-	</footer>
-		
 	
 	<script src="script.js">
 		
