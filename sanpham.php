@@ -34,28 +34,27 @@
 			</nav>
 			<div>
 				<?php
-				include 'config.php';
-				$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-				if (isset($_GET["search"]) && !empty($_GET["search"])) {
-					$key = trim($_GET["search"]);
-					$sql = "SELECT product_id, product_name, product_image, price 
-				FROM san_pham 
-				WHERE (product_id LIKE '%$key%') 
-					OR (product_name LIKE '%$key%') 
-					OR (product_image LIKE '%$key%') 
-					OR (price LIKE '%$key%');";
+					include 'config.php';
+					$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
+					if (isset($_GET["search"]) && !empty($_GET["search"])) {
+						$key = trim($_GET["search"]);
+						$sql = "SELECT product_id, product_name, product_image, price 
+					FROM san_pham 
+					WHERE (product_id LIKE '%$key%') 
+						OR (product_name LIKE '%$key%') 
+						OR (product_image LIKE '%$key%') 
+						OR (price LIKE '%$key%');";
 
-					$result = mysqli_query($conn, $sql);
-					if (mysqli_num_rows($result) <= 0) {
-						echo "<script>alert('Không tìm thấy " . $_GET["search"] . " trong tài liệu nào.!');
-						window.location.href = 'index.php';
-						</script>";
+						$result = mysqli_query($conn, $sql);
+						if (mysqli_num_rows($result) <= 0) {
+							echo "<script>alert('Không tìm thấy " . $_GET["search"] . " trong tài liệu nào.!');
+							window.location.href = 'index.php';
+							</script>";
+						}
+					} else {
+						$sql = "SELECT * FROM san_pham ORDER BY price DESC";
+						$result = mysqli_query($conn, $sql);
 					}
-				} else {
-					$sql = "SELECT * FROM san_pham ORDER BY price DESC";
-					$result = mysqli_query($conn, $sql);
-				}
-
 				?>
 				<form action="" method="get">
 					<input type="text" placeholder="Bạn tìm gì....." name="search" value="<?php if (isset($_GET["search"])) {
@@ -85,15 +84,14 @@
 
 
 	</header>
-	<div class="sidebar">
-		<!-- <p style="font-size: 16px;">DANH MỤC SẢN PHẨM</p> -->
+	<!-- <div class="sidebar">
 		<i>Danh mục sản phẩm</i>
 		<a href="dtiphone.php" class="active">iPhone</a>
 		<a href="dtsamsung.php">Samsung</a>
 		<a href="dtoppo.php">Oppo</a>
 		<a href="dtxiaomi.php">Xiaomi</a>
 		<a href="dtvivo.php">Vivo</a>
-	</div>
+	</div> -->
 	<div class="container">
 
 		<main>
@@ -101,32 +99,24 @@
 				<div class="slideshow-container">
 
 					<div class="mySlides fade">
-
 						<img src="./hinh_anh/banner/banner0.gif" style="width:100%;">
-
 					</div>
 
 					<div class="mySlides fade">
-
 						<img src="./hinh_anh/banner/banner1.png" style="width:100%">
-
 					</div>
 
 					<div class="mySlides fade">
 						<img src="./hinh_anh/banner/banner2.png" style="width:100%">
-
 					</div>
 
 					<div class="mySlides fade">
 						<img src="./hinh_anh/banner/banner3.png" style="width:100%">
-
 					</div>
 
 					<div class="mySlides fade">
 						<img src="./hinh_anh/banner/banner4.png" style="width:100%">
-
 					</div>
-
 
 					<div class="boder-prev">
 						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -181,13 +171,6 @@
 	</main>
 
 	</div>
-	<footer>
-		<div class="footer-ct">
-			<p>Nguyễn Phi Hùng - 10/08/2002 </p>
-			<p>Website bán điện thoại di động &copy; 2023</p>
-		</div>
-
-	</footer>
 	<script src="script.js"></script>
 </body>
 

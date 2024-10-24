@@ -26,7 +26,7 @@
 			<div>
 				<?php
 				include 'config.php';
-				$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME,3366);
+				$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 
 				if (isset($_GET["search"]) && !empty($_GET["search"])) {
 					$key = trim($_GET["search"]);
@@ -84,7 +84,7 @@
         <a href="dtoppo.php">Oppo</a>
         <a href="dtxiaomi.php">Xiaomi</a>
         <a href="dtvivo.php">Vivo</a>
-    </div>
+    </div> -->
 	<div class="container">
 		
 		<main>
@@ -92,32 +92,24 @@
 				<div class="slideshow-container">
 
 					<div class="mySlides fade">
-
 						<img src="./hinh_anh/banner/banner0.gif" style="width:100%;">
-
 					</div>
 
 					<div class="mySlides fade">
-
 						<img src="./hinh_anh/banner/banner1.png" style="width:100%">
-
 					</div>
 
 					<div class="mySlides fade">
 						<img src="./hinh_anh/banner/banner2.png" style="width:100%">
-
 					</div>
 
 					<div class="mySlides fade">
 						<img src="./hinh_anh/banner/banner3.png" style="width:100%">
-
 					</div>
 
 					<div class="mySlides fade">
 						<img src="./hinh_anh/banner/banner4.png" style="width:100%">
-
 					</div>
-
 
 					<div class="boder-prev">
 						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -159,14 +151,11 @@
 					<a href="./chitietsanpham.php?product_id=<?php echo $ma;?>">
 							<h2><?php echo $ten?></h2>
 					</a>
-					
 					<p><?php echo $parsed_gia?>₫</p>
 					<button>
 						<a href="./chitietsanpham.php?product_id=<?php echo $ma;?>" class="btn">Xem chi tiết</a>
 					</button>
-					
             </div>
-				
 			</div>
 		</main>
 	

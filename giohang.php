@@ -76,7 +76,7 @@
             }
             if ($error == false && !empty($_POST['quantity'])) { // xử lý lưu giỏ hàng bằng database
               //  var_dump($_POST['quantity']);
-              $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+              $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
               //  SELECT * FROM `san_pham` WHERE `product_id` IN (2,3)
 
               $sql = "SELECT * FROM `san_pham` WHERE `product_id` IN (" . implode(",", array_keys($_POST["quantity"])) . ")";
@@ -129,7 +129,7 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
       }
     }
     if (!empty($_SESSION["cart"])) {
-      $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+      $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 
       $sql = " SELECT * FROM `san_pham` WHERE `product_id` IN (" . implode(",", array_keys($_SESSION["cart"])) . ")";
     }

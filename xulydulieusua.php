@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 if (isset($_POST["btnSave"])) {
     $ten_sanpham = $_POST['ten_sanpham'];
     $mota = $_POST['mota'];

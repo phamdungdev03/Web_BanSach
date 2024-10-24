@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 $ma = $_GET['idSV'];
 $sql = "SELECT `category_description` FROM `danh_muc_san_pham` where `category_id` = $ma";
 $result = mysqli_query($conn, $sql);

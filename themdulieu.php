@@ -24,7 +24,6 @@
 		table {
 			border: 1px solid black;
 		}
-
 		input[type="text"],
 		input[type="number"],
 		input[type="file"] {
@@ -33,7 +32,6 @@
 			margin: 5px;
 			width: 300px;
 		}
-
 		form {
 			display: flex;
 			flex-direction: column;
@@ -41,7 +39,6 @@
 			justify-content: center;
 			height: 100vh;
 		}
-
 		button {
 			padding: 10px;
 			background-color: #4CAF50;
@@ -50,8 +47,6 @@
 			border-radius: 5px;
 			cursor: pointer;
 		}
-
-
 		button[type="reset"] {
 			margin-left: 10px;
 		}
@@ -87,7 +82,7 @@
 					<select name="danhmuc">
 						<?php
 						include 'config.php';
-						$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+						$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 						$sql = "SELECT * FROM `danh_muc_san_pham`";
 						$result = mysqli_query($conn, $sql);
 						while ($row = mysqli_fetch_assoc($result)) {

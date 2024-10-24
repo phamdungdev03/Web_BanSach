@@ -61,7 +61,7 @@
       <?php
 
       include 'config.php';
-      $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+      $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
       $sql = "SELECT * FROM `khach_hang` WHERE `id` = 2";
       $result = mysqli_query($conn, $sql);
 
@@ -161,9 +161,11 @@
   <br>
   <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-  <footer>
-    <p> Nguyễn Phi Hùng - 10/08/2002</p>
-  </footer>
+  <footer style="margin-top:100px">
+        <p>Lê Thị Phương Thảo - 18/09/2003 </p>
+        <p>Nguyễn Văn Quang - 10/08/2003</p>
+        <p>Ngô Văn Thông - 09/06/2003</p>
+    </footer>
 </body>
 
 </html>
