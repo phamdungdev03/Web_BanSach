@@ -62,7 +62,7 @@
 
       include 'config.php';
       $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-      $sql = "SELECT * FROM `khach_hang` WHERE `id` = 2";
+      $sql = "SELECT * FROM `khach_hang` WHERE `vaitro_id` = 2";
       $result = mysqli_query($conn, $sql);
 
 

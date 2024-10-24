@@ -39,7 +39,7 @@ CREATE TABLE `khach_hang` (
     `customer_phone` varchar(20) NOT NULL COMMENT 'Số điện thoại khách hàng',
     `username` varchar(50) NOT NULL COMMENT 'Tên đăng nhập của khách hàng',
     `password` varchar(255) NOT NULL COMMENT 'Mật khẩu của khách hàng',
-    `id` int(10) UNSIGNED NOT NULL COMMENT 'id',
+    `vaitro_id` int(10) UNSIGNED NOT NULL COMMENT 'Vai trò của người dùng',
     PRIMARY KEY (`customer_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 -- Tạo bảng `san_pham`
@@ -76,3 +76,31 @@ CREATE TABLE `vai_tro` (
 INSERT INTO `vai_tro` (`id`, `name`)
 VALUES (1, 'admin'),
     (2, 'client');
+
+-- Tạo Foreign Key cho bảng chi_tiet_don_hang
+ALTER TABLE `chi_tiet_don_hang`
+ADD CONSTRAINT `fk_chi_tiet_don_hang_don_hang`
+FOREIGN KEY (`order_id`) REFERENCES `don_hang` (`order_id`);
+
+ALTER TABLE `chi_tiet_don_hang`
+ADD CONSTRAINT `fk_chi_tiet_don_hang_khach_hang`
+FOREIGN KEY (`customer_id`) REFERENCES `khach_hang` (`customer_id`);
+
+ALTER TABLE `chi_tiet_don_hang`
+ADD CONSTRAINT `fk_chi_tiet_don_hang_san_pham`
+FOREIGN KEY (`product_id`) REFERENCES `san_pham` (`product_id`);
+
+-- Tạo Foreign Key cho bảng san_pham
+ALTER TABLE `san_pham`
+ADD CONSTRAINT `fk_san_pham_danh_muc_san_pham`
+FOREIGN KEY (`category_id`) REFERENCES `danh_muc_san_pham` (`category_id`);
+
+-- Tạo Foreign Key cho bảng don_hang
+ALTER TABLE `don_hang`
+ADD CONSTRAINT `fk_don_hang_trang_thai`
+FOREIGN KEY (`order_status`) REFERENCES `trang_thai` (`order_status`);
+
+-- Tạo Foreign Key cho bảng khach_hang
+ALTER TABLE `khach_hang`
+ADD CONSTRAINT `fk_khach_hang_vai_tro`
+FOREIGN KEY (`vaitro_id`) REFERENCES `vai_tro` (`id`);

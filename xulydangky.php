@@ -29,7 +29,7 @@ if (isset($_POST["btnSavedk"]) && ($_POST['matkhau'] == $_POST['xnmatkhau'])) {
         $tendangnhap = $_POST["tendangnhap"];
         $matkhau = $_POST["matkhau"];
         $hashed_password = password_hash($matkhau, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO `khach_hang`(`customer_name`, `customer_address`, `customer_email`, `customer_phone`, `username`, `password`,`id`)
+        $sql = "INSERT INTO `khach_hang`(`customer_name`, `customer_address`, `customer_email`, `customer_phone`, `username`, `password`,`vaitro_id`)
          VALUES ('$ten','$dcct','$email','$sdt','$tendangnhap','$hashed_password','2')";
         if (mysqli_query($conn, $sql)) {
             echo "<script>alert('Đăng ký thành công!');

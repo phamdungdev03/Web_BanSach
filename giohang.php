@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +13,7 @@
 </head>
 
 <body>
-
+  <?php include 'header.php' ?>
   <?php
   include 'config.php';
   if (isset($_SESSION['username'])) {
@@ -134,37 +133,6 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
       $sql = " SELECT * FROM `san_pham` WHERE `product_id` IN (" . implode(",", array_keys($_SESSION["cart"])) . ")";
     }
   ?>
-    <header>
-      <div class="header-container">
-        <div class="logo">
-          <a href="index.php"><img src="./hinh_anh/logomb.png" alt="logo"></a>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="index.php">Trang chủ</a></li>
-            <li><a href="sanpham.php">Sản phẩm</a></li>
-            <li><a href="#">Liên hệ</a></li>
-          </ul>
-        </nav>
-
-        <div class="cart">
-          <a href="giohang.php"><img src="./hinh_anh/logogiohang.png" alt="Giỏ hàng"></a>
-        </div>
-
-        <?php
-
-        if (isset($_SESSION['username'])) {
-
-          echo "<div><a style='color:#fff; text-decoration: none;
-      font-weight: bold;'  href='./donhang.php'>Đơn hàng</a></div>";
-          echo "<div><a style='color:#fff; text-decoration: none;
-      font-weight: bold;'  href='thoat.php'>Đăng xuất</a></div>";
-          echo "<div><p style='color:#fff'>Chào mừng,<br>" . $_SESSION['username'] . "</p></div>";
-        } else {
-          echo "<div class='dangnhap'><a href='dangnhap.php'><img src='./hinh_anh/logodangnhap.png' alt='Đăng nhập'></a></div>";
-        }
-        ?>
-    </header>
     <br>
     <br>
     <br><br><br>
