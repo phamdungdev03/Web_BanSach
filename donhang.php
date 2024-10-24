@@ -58,7 +58,7 @@
             <?php
 
             include 'config.php';
-            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 
             $username = $_SESSION['username'];
             $query = "SELECT customer_id FROM khach_hang WHERE username = '$username'";

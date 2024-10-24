@@ -6,23 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trang chủ quản lý</title>
     <link rel="stylesheet" href="admin.css">
-    <style>
-    </style>
 </head>
 
 <body>
     <div class="header">
-        <div class="logo">HUNG MOBILE</div>
+        <div class="logo">BOOK STORE</div>
         <div class="user-info">
-
             <?php
-            session_start();
-            if (isset($_SESSION['username'])) {
-                echo "<a href='thoat.php' >Đăng xuất</a>";
-                echo "<p>Chào mừng,<br>" . $_SESSION['username'] . "</p>";
-            } else {
-                echo  "<a href='dangnhap.php'>Đăng nhập</a>";
-            }
+                session_start();
+                if (isset($_SESSION['username'])) {
+                    echo "<p>Chào mừng,<br>" . $_SESSION['username'] . "</p>";
+                    echo "<a href='thoat.php' >Đăng xuất</a>";
+                } else {
+                    echo  "<a href='dangnhap.php'>Đăng nhập</a>";
+                }
             ?>
         </div>
     </div>
@@ -60,17 +57,13 @@
     <section class="hero">
         <div class="hero-text">
             <?php
+                include 'config.php';
+                $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 
-            include 'config.php';
-            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-
-            $sql = "SELECT * From `danh_muc_san_pham`";
-            $result = mysqli_query($conn, $sql);
-
+                $sql = "SELECT * From `danh_muc_san_pham`";
+                $result = mysqli_query($conn, $sql);
             ?>
-            <div style='margin-left: 200px;'>
-
-
+            <div style='margin-left: 160px;'>
                 <div class="div1">
                     <h3 align="center">Quản lý danh mục sản phẩm </h3>
                 </div>
@@ -101,9 +94,6 @@
 
                     </tr>
                     </form>
-                    <td colspan="3" align="center">
-                        <h3>Liệt Kê menu</h3>
-                    </td>
                     <tr>
                         <th>STT</th>
                         <th>Tên danh mục</th>
@@ -154,8 +144,10 @@
     </section>
     </div>
 
-    <footer>
-        <p> Nguyễn Phi Hùng - 10/08/2002</p>
+    <footer style="margin-top:100px">
+        <p>Lê Thị Phương Thảo - 18/09/2003 </p>
+        <p>Nguyễn Văn Quang - 10/08/2003</p>
+        <p>Ngô Văn Thông - 09/06/2003</p>
     </footer>
 </body>
 

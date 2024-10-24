@@ -62,7 +62,7 @@
 
     <?php
     include 'config.php';
-    $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+    $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
     $madm = $_GET["idSV"];
     $sql = "SELECT * FROM `danh_muc_san_pham` where `category_id` = $madm";
     $result = mysqli_query($conn, $sql);

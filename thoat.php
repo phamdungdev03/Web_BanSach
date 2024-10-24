@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_destroy(); // Xoá toàn bộ thông tin của session
+session_destroy(); 
 
 header("Location: index.php"); 
 exit();

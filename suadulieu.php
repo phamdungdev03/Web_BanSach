@@ -10,7 +10,6 @@
             text-align: right;
             margin-right: 10px;
         }
-
         input[type="text"],
         input[type="number"],
         select {
@@ -20,11 +19,9 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
         table {
             border: 1px solid black;
         }
-
         input[type="text"],
         input[type="number"],
         input[type="file"] {
@@ -33,7 +30,6 @@
             margin: 5px;
             width: 300px;
         }
-
         form {
             display: flex;
             flex-direction: column;
@@ -41,7 +37,6 @@
             justify-content: center;
             height: 100vh;
         }
-
         button {
             padding: 10px;
             background-color: #4CAF50;
@@ -50,8 +45,6 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
-
         button[type="reset"] {
             margin-left: 10px;
         }
@@ -61,7 +54,7 @@
 <body>
     <?php
     include 'config.php';
-    $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+    $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
     $maSp = $_GET["idSV"];
     $sql = "SELECT * FROM `san_pham` where product_id = $maSp";
     $result = mysqli_query($conn, $sql);

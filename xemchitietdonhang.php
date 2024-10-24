@@ -68,7 +68,7 @@
             <?php
 
             include 'config.php';
-            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 
             $sql = "SELECT * FROM `chi_tiet_don_hang` where order_id = " . $_GET['iddh'] . "";
             $result = mysqli_query($conn, $sql);
@@ -107,24 +107,19 @@
                         </td>
 
                         <td>
-
                             <?php
                             echo   $ten;
                             ?>
-
                         </td>
                         <td>
-
                             <?php
                             echo  number_format($gia, 0, ",", ",");
                             ?>
-
                         </td>
                         <td>
                             <?php
                             echo   $soluong
                             ?>
-
                         </td>
                         <td>
                             <?php

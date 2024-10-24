@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 
 if (isset($_POST["btnSave"])) {
     $ten_sanpham = $_POST['ten_sanpham'];
@@ -16,6 +16,5 @@ $sql = "INSERT INTO `san_pham`(`product_name`, `product_description`, `product_i
 if (mysqli_query($conn, $sql)) {
     header('location:quanlysanpham.php');
 } else {
-    //lỗi
     $result = "Lỗi thêm mới" . mysqli_error($conn);
 }

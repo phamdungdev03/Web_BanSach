@@ -35,7 +35,7 @@
             <div>
                 <?php
                 include 'config.php';
-                $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+                $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST, $HOST);
 
                 $sql = "SELECT sp.product_id, sp.product_name, sp.product_description, sp.product_image, sp.price, sp.stock_quantity, sp.category_id
                 FROM san_pham sp

@@ -110,7 +110,7 @@ INSERT INTO `danh_muc_san_pham` (
 VALUES (
     1,
     '  iphone ',
-    '    \r\n                           \r\n                        iPhone là smartphone được tin dùng và sử dụng phổ biến trên toàn thế giới, tuy nhiên có bao giờ bạn tự hỏi chiếc điện thoại của mình có xuất xứ là hàng chính hãng hay thuộc thể loại tân trang,...? Để tránh được những hàng dựng và người bán không tâm có tâm trên thị trường. Và hôm nay, mình sẽ mách bạn cách phân biệt các loại iPhone trên thị trường hiện nay bằng số máy iPhone.                                '
+    '    \r\n\r\niPhone là smartphone được tin dùng và sử dụng phổ biến trên toàn thế giới, tuy nhiên có bao giờ bạn tự hỏi chiếc điện thoại của mình có xuất xứ là hàng chính hãng hay thuộc thể loại tân trang,...? Để tránh được những hàng dựng và người bán không tâm có tâm trên thị trường. Và hôm nay, mình sẽ mách bạn cách phân biệt các loại iPhone trên thị trường hiện nay bằng số máy iPhone.                                '
   ),
   (
     2,
