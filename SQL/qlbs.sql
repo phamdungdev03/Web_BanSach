@@ -69,6 +69,20 @@ CREATE TABLE `chi_tiet_don_hang` (
     CONSTRAINT `fk_chi_tiet_don_hang_san_pham` FOREIGN KEY (`product_id`) REFERENCES `san_pham` (`product_id`),
     CONSTRAINT `fk_chi_tiet_don_hang_khach_hang` FOREIGN KEY (`customer_id`) REFERENCES `khach_hang` (`customer_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+CREATE TABLE `gio_hang` (
+  `cart_id` int(11) NOT NULL,
+  `customer_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `chi_tiet_gio_hang` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `cart_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- Tạo bảng `vai_tro`
 CREATE TABLE `vai_tro` (
     `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
@@ -108,6 +122,9 @@ FOREIGN KEY (`order_status`) REFERENCES `trang_thai` (`order_status`);
 ALTER TABLE `khach_hang`
 ADD CONSTRAINT `fk_khach_hang_vai_tro`
 FOREIGN KEY (`vaitro_id`) REFERENCES `vai_tro` (`id`);
+
+ALTER TABLE `chi_tiet_gio_hang`
+  ADD CONSTRAINT `chi_tiet_gio_hang_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `gio_hang` (`cart_id`);
 =======
 -- Dữ liệu mẫu cho bảng `trang_thai`
 INSERT INTO `trang_thai` (`order_status`, `status`)
