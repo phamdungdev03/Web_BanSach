@@ -50,8 +50,8 @@
             transition: border-color 0.3s;
         }
 
-		.select{
-			width: calc(100%);
+        .select {
+            width: calc(100%);
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #d1d5db;
@@ -59,7 +59,7 @@
             font-size: 14px;
             background-color: #f9fafb;
             transition: border-color 0.3s;
-		}
+        }
 
         .input:focus,
         .select:focus,
@@ -102,7 +102,7 @@
 </head>
 
 <body>
-    <form action="xulythem.php" method="POST" enctype="multipart/form-data">
+    <form action="xulythem.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
         <h1>Thêm Mới Sản Phẩm</h1>
         <label for="ten_sanpham">Tên sản phẩm:</label>
         <input type="text" name="ten_sanpham" id="ten_sanpham" class="input" required>
@@ -114,7 +114,7 @@
         <input type="text" name="gia" id="gia" class="input" required>
 
         <label for="soluonghangton">Số lượng hàng tồn:</label>
-        <input type="number" name="soluonghangton" id="soluonghangton" class="input" required>
+        <input type="number" name="soluonghangton" id="soluonghangton" class="input" required min="1">
 
         <label for="danhmuc">Danh mục sản phẩm:</label>
         <select name="danhmuc" id="danhmuc" class="select" required>
@@ -134,11 +134,32 @@
         </select>
 
         <label for="hinhanh">Hình ảnh:</label>
-        <input type="file" name="hinhanh" id="hinhanh" class="input" required>
+        <input type="file" name="hinhanh" id="hinhanh" class="input" accept="image/*" required>
 
         <button type="submit" name="btnSave">Lưu Sản Phẩm</button>
         <button type="reset">Nhập Lại</button>
     </form>
+
+    <script>
+        function validateForm() {
+            const gia = document.getElementById('gia').value;
+            const hinhanh = document.getElementById('hinhanh').value;
+
+            // Validate giá sản phẩm
+            if (isNaN(gia) || gia <= 0) {
+                alert('Vui lòng nhập giá sản phẩm là số lớn hơn 0.');
+                return false;
+            }
+
+            // Validate file hình ảnh
+            if (!hinhanh.match(/\.(jpg|jpeg|png|gif)$/i)) {
+                alert('Vui lòng chọn file ảnh có định dạng jpg, jpeg, png hoặc gif.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 
 </html>
