@@ -18,12 +18,8 @@ if (isset($_POST['login'])) {
         // Đăng nhập thành công, lưu thông tin người dùng vào biến session
         session_start();
         $_SESSION['username'] = $username;
-<<<<<<< HEAD
-        if ($user['id'] == 1) {
-=======
         $_SESSION['user_id'] = $user['customer_id'];
         if ($user['vaitro_id'] == 1) {
->>>>>>> beca0849c9978cb366abca8087dd0cb5aee4810a
             header("Location: indexadmin.php");
         } else {
             header("Location: index.php");
