@@ -16,7 +16,6 @@
             align-items: center;
             height: 100vh;
         }
-
         form {
             background-color: #ffffff;
             border-radius: 8px;
@@ -25,21 +24,19 @@
             width: 400px;
             max-width: 100%;
         }
-
         h1 {
             text-align: center;
             color: #333;
         }
-
         label {
             display: inline-block;
             margin-bottom: 10px;
             color: #333;
             font-weight: bold;
         }
-
         .input,
-        .textarea {
+        .textarea,
+        .select {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 15px;
@@ -49,18 +46,6 @@
             background-color: #f9fafb;
             transition: border-color 0.3s;
         }
-
-		.select{
-			width: calc(100%);
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 14px;
-            background-color: #f9fafb;
-            transition: border-color 0.3s;
-		}
-
         .input:focus,
         .select:focus,
         .textarea:focus {
@@ -68,12 +53,10 @@
             box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
             outline: none;
         }
-
         .textarea {
             height: 100px;
             resize: none;
         }
-
         button {
             padding: 10px;
             background-color: #4CAF50;
@@ -85,16 +68,13 @@
             font-size: 16px;
             transition: background-color 0.3s;
         }
-
         button:hover {
             background-color: #45a049;
         }
-
         button[type="reset"] {
             background-color: #f44336;
             margin-top: 10px;
         }
-
         button[type="reset"]:hover {
             background-color: #d32f2f;
         }
@@ -119,17 +99,15 @@
         <label for="danhmuc">Danh mục sản phẩm:</label>
         <select name="danhmuc" id="danhmuc" class="select" required>
             <?php
-            include 'config.php';
-            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
-            $sql = "SELECT * FROM `danh_muc_san_pham`";
-            $result = mysqli_query($conn, $sql);
-            while ($row = mysqli_fetch_assoc($result)) {
-                $madm = $row["category_id"];
-                $tendm = $row["category_name"];
-            ?>
-                <option value="<?php echo $madm; ?>"><?php echo $tendm; ?></option>
-            <?php
-            }
+                include 'config.php';
+                $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
+                $sql = "SELECT * FROM `danh_muc_san_pham`";
+                $result = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $madm = $row["category_id"];
+                    $tendm = $row["category_name"];
+                    echo "<option value=\"$madm\">$tendm</option>";
+                }
             ?>
         </select>
 
