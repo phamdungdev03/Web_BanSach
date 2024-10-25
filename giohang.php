@@ -66,12 +66,12 @@
         }
       }
 
-      function updateCart($cart_id, $product_id, $quantity)
+      function updateCart($cart_item_id, $product_id, $quantity)
       {
         include 'config.php';
         $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
         if ($quantity > 0) {
-          $sql = "UPDATE chi_tiet_gio_hang SET quantity = $quantity Where cart_id = $cart_id and product_id = $product_id";
+          $sql = "UPDATE chi_tiet_gio_hang SET quantity = $quantity Where id = $cart_item_id and product_id = $product_id";
           $conn->query($sql);
         }
       }
@@ -94,6 +94,27 @@
           }
         }
       }
+
+      function deleteCartWhenByProduct($customerId, $conn)
+      {
+        $sql1 = "SELECT cart_id FROM gio_hang WHERE customer_id = $customerId";
+        $result1 = $conn->query($sql1);
+
+        if ($result1->num_rows > 0) {
+          $row = $result1->fetch_assoc();
+          $cart_id = $row['cart_id'];
+          $sql2 = "SELECT id FROM chi_tiet_gio_hang WHERE cart_id = $cart_id";
+          $result2 = $conn->query($sql2);
+
+          if ($result2->num_rows > 0) {
+            while ($itemRow = $result2->fetch_assoc()) {
+              $cart_item_id = $itemRow['id'];
+              deleteCart($cart_id, $cart_item_id);
+            }
+          }
+        }
+      }
+
       switch ($_GET['action']) {
         case "add";
           $customer_id = $_SESSION['user_id'];
@@ -112,15 +133,15 @@
           }
           header("location:giohang.php");
           break;
+        case "edit":
+          $cart_item_id = intval($_POST['cart_item_id']);
+          $quantity = intval($_POST['quantity']);
+          $product_id = intval($_POST['product_id']);
+          updateCart($cart_item_id, $product_id, $quantity);
+          header("location:giohang.php");
+          break;
         case "submit":
-          if (isset($_POST['update_click'])) {
-            $cart_id = intval($_POST['cart_id']);
-            $quantity = intval($_POST['quantity']);
-            $product_id = intval($_POST['product_id']);
-            updateCart($cart_id, $product_id, $quantity);
-            header("location:giohang.php");
-          } else if (isset($_POST['order_click'])) // đặt hàng sản phẩm
-          {
+          if (isset($_POST['order_click'])) {
             if (empty($_POST['ten'])) {
               $error = "Bạn chưa nhập tên của người nhận";
             } else if (empty($_POST['sdt'])) {
@@ -132,55 +153,55 @@
             } else if (empty($_POST['quantity'])) {
               $error = "Giỏ hàng rỗng";
             }
-            if ($error == false && !empty($_POST['quantity'])) { // xử lý lưu giỏ hàng bằng database
-              //  var_dump($_POST['quantity']);
+            if ($error == false && !empty($_POST['quantity'])) {
               $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
-              //  SELECT * FROM `san_pham` WHERE `product_id` IN (2,3)
+              $customer_id = $_SESSION['user_id'];
 
-              $sql = "SELECT * FROM `san_pham` WHERE `product_id` IN (" . implode(",", array_keys($_POST["quantity"])) . ")";
-              $result = mysqli_query($conn, $sql);
-              $total = 0;
-              $orderProducts = array();
-              while ($row = mysqli_fetch_array($result)) {
-                $orderProducts[] = $row;
-                $total += $row['price'] * $_POST['quantity'][$row['product_id']];
+              $sql = "SELECT cart_id FROM gio_hang WHERE customer_id = $customer_id";
+              $resultCartItem = $conn->query($sql);
+              if ($resultCartItem->num_rows > 0) {
+                $row = $resultCartItem->fetch_assoc();
+                $cart_id = $row['cart_id'];
               }
-              //----------------------
 
-              // Lấy mã khách hàng từ cơ sở dữ liệu
-              $queryy = "SELECT customer_id FROM khach_hang WHERE username = '" . $_SESSION['username'] . "'";
-              $resultkh = mysqli_query($conn, $queryy);
-              $roww = mysqli_fetch_assoc($resultkh);
-              $ma_khach_hang = $roww['customer_id'];
+              $resultUser = $conn->query("SELECT * from khach_hang where customer_id = $customer_id");
+              $sql2 = "SELECT * FROM chi_tiet_gio_hang WHERE cart_id = $cart_id";
+              $result2 = $conn->query($sql2);
 
-              //-----------------
-              //    INSERT INTO `don_hang`(`order_id`, `customer_name`, `customer_address`, `customer_email`, `customer_phone`, `total_amount`, `order_date`, `order_status`, `customer_id`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
-              $sql2 = "INSERT INTO `don_hang`( `customer_name`, `customer_address`, `customer_email`, `customer_phone`, `total_amount`, `order_date`, `order_status`)
-                  VALUES ('" . $_POST['ten'] . "','" . $_POST['city'] . " - " . $_POST['district'] . " - " . $_POST['ward'] . " - " . $_POST['diachicuthe'] . "','" . $_POST['email'] . "','" . $_POST['sdt'] . "','" . $total . "','" . time() . "','1')";
-              $inserntOrder = mysqli_query($conn, $sql2);
-              $last_id = mysqli_insert_id($conn);
-              $insentString = "";
-              foreach ($orderProducts as $key => $product) {
-                $insentString .= "(
-                      '" . $last_id . "', 
-                      '" . $product['product_name'] . "', 
-                      '" . $product['price'] . "', 
-                      '" . $_POST['quantity'][$product['product_id']] . "', 
-                      '" . ($product['price'] * $_POST['quantity'][$product['product_id']]) . "', 
-                      '" . $ma_khach_hang . "', 
-                      '" . $product['product_id'] . "'
-                    )";
-                if ($key != count($orderProducts) - 1) {
-                  $insentString .= ",";
+              $total_amount = 0;
+              if ($result2->num_rows > 0) {
+                while ($itemRow = $result2->fetch_assoc()) {
+                  $total = $itemRow["quantity"] * $itemRow["price"];
+                  $total_amount += $total;
                 }
               }
-              /* INSERT INTO `chi_tiet_don_hang` (`order_id`, `product_name`, `price`, `quantity`, `total_amount`, `customer_id`, `product_id`)
-VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[value-6a]', '[value-7a]'),
-('[value-1b]', '[value-2b]', '[value-3b]', '[value-4b]', '[value-5b]', '[value-6b]', '[value-7b]');*/
-              $sql3 = "INSERT INTO `chi_tiet_don_hang` (`order_id`, `product_name`, `price`, `quantity`, `total_amount`, `customer_id`, `product_id`) VALUES " . $insentString . ";";
-              $inserntOrder = mysqli_query($conn, $sql3);
-              $success = "Đặt hàng thành công";
-              unset($_SESSION['cart']);
+
+              $userRow = $resultUser->fetch_assoc();
+              $customer_name = $userRow['customer_name'];
+              $customer_address = $userRow['customer_address'];
+              $customer_email = $userRow['customer_email'];
+              $customer_phone = $userRow['customer_phone'];
+
+              $order_date = date('Y-m-d H:i:s');
+              $order_status = '1';
+              $sql2 = "INSERT INTO `don_hang`( `customer_name`, `customer_address`, `customer_email`, `customer_phone`, `total_amount`, `order_date`, `order_status`)
+                  VALUES ('$customer_name', '$customer_address', '$customer_email', '$customer_phone', '$total_amount', '" . time() . "', '$order_status')";
+              $inserntOrder = mysqli_query($conn, $sql2);
+              $last_id = mysqli_insert_id($conn);
+
+              $sql4 = "SELECT * FROM chi_tiet_gio_hang WHERE cart_id = $cart_id";
+              $result4 = $conn->query($sql4);
+              if ($result4->num_rows > 0) {
+                while ($itemRow = $result4->fetch_assoc()) {
+                  $price = $itemRow['price'];
+                  $quantity = $itemRow['quantity'];
+                  $product_id = $itemRow['product_id'];
+                  $sql3 = "INSERT INTO `chi_tiet_don_hang` (`order_id`, `price`, `quantity`, `customer_id`, `product_id`) VALUES ('$last_id', '$price','$quantity','$customer_id','$product_id')";
+                  $inserntOrder = mysqli_query($conn, $sql3);
+                }
+                $success = "Đặt hàng thành công";
+              }
+              deleteCartWhenByProduct($customer_id, $conn);
             }
           }
           break;
@@ -240,9 +261,14 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
                     <td><?= $row["product_name"] ?></td>
                     <td><img src="./hinh_anh/didong/<?= $row["product_image"] ?>" alt=""></td>
                     <td class="gia"><?= number_format($row["price"], 0, ",", ","); ?>₫</td>
-                    <td><input size="1" name="quantity" type="number" value="<?= $row["quantity"] ?>"></td>
+                    <td class="countdown">
+                      <span id="prev" data-product_id="<?= $row["product_id"] ?>" data-cart-id="<?= $row["id"] ?>">-</span>
+                      <input id="quantity" name="quantity" type="number" min="1" value="<?= $row["quantity"] ?>" data-product_id="<?= $row["product_id"] ?>" data-cart-id="<?= $row["id"] ?>">
+                      <span id="add" data-product_id="<?= $row["product_id"] ?>" data-cart-id="<?= $row["id"] ?>">+</span>
+                    </td>
                     <input type="hidden" name="cart_id" value="<?= $row["cart_id"] ?>">
                     <input type="hidden" name="product_id" value="<?= $row["product_id"] ?>">
+                    <input type="hidden" name="id" value="<?= $row["id"] ?>">
                     <td class="gia"><?= number_format($row["quantity"] * $row["price"], 0, ",", ","); ?>₫</td>
                     <td><a href="giohang.php?action=delete&id=<?= $row["id"] ?>&cart_id=<?= $row["cart_id"] ?>" style="text-decoration: none;">
                         <div class="remove">Xóa</div>
@@ -272,10 +298,6 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
 
           ?>
           </table>
-          <div id="form-button">
-            <input class="update" type="submit" name="update_click" value="Cập nhật">
-          </div>
-
 
       </div>
       <div class="total">
@@ -287,11 +309,13 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
         <!-- <button class="checkout">Tiến hành đặt hàng</button> -->
       </div>
       </form>
+      <form id="updateCartForm" action="giohang.php?action=edit" method="POST" style="display:none;">
+        <input type="hidden" name="cart_item_id" id="hiddenCartId">
+        <input type="hidden" name="product_id" id="hiddenProductId">
+        <input type="hidden" name="quantity" id="hiddenQuantity">
+      </form>
       <div align="center" style="margin: 30px 0">
-
         <button class="buttont" onclick="addToT()">Thêm sản phẩm khác</button>
-
-
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
@@ -309,6 +333,36 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
     echo "Bạn không thể thêm hoặc vào giỏ hàng vì chưa đăng nhập. Vui lòng đăng nhập tại đây.<a href='dangnhap.php'>Đăng nhập</a>";
   }
   ?>
+  <script>
+    document.querySelectorAll('.countdown').forEach(countdown => {
+      const prev = countdown.querySelector('#prev');
+      const add = countdown.querySelector('#add');
+      const quantityInput = countdown.querySelector('#quantity');
+
+      prev.onclick = () => {
+        var currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+          quantityInput.value = currentValue - 1;
+          updateHidden(prev, quantityInput.value);
+        }
+      }
+
+      add.onclick = () => {
+        var currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+        updateHidden(add, quantityInput.value);
+      }
+    });
+
+    function updateHidden(element, quantity) {
+      const cartId = element.dataset.cartId;
+      const productId = element.dataset.product_id;
+      document.getElementById('hiddenCartId').value = cartId;
+      document.getElementById('hiddenProductId').value = productId;
+      document.getElementById('hiddenQuantity').value = quantity;
+      document.getElementById('updateCartForm').submit();
+    }
+  </script>
 </body>
 
 </html>

@@ -54,10 +54,8 @@ CREATE TABLE `don_hang` (
 CREATE TABLE `chi_tiet_don_hang` (
     `order_id` int(10) UNSIGNED NOT NULL COMMENT 'Mã đơn hàng',
     `product_id` int(10) UNSIGNED NOT NULL COMMENT 'Mã sản phẩm',
-    `product_name` varchar(255) NOT NULL COMMENT 'Tên sản phẩm',
     `price` decimal(10, 0) NOT NULL COMMENT 'Giá sản phẩm',
     `quantity` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Số lượng sản phẩm',
-    `total_amount` decimal(10, 0) NOT NULL COMMENT 'Tổng giá trị',
     `customer_id` int(10) UNSIGNED NOT NULL COMMENT 'Mã khách hàng',
     PRIMARY KEY (`order_id`, `product_id`),
     CONSTRAINT `fk_chi_tiet_don_hang_don_hang` FOREIGN KEY (`order_id`) REFERENCES `don_hang` (`order_id`),
@@ -105,9 +103,12 @@ ADD CONSTRAINT `fk_don_hang_trang_thai` FOREIGN KEY (`order_status`) REFERENCES 
 ALTER TABLE `khach_hang`
 ADD CONSTRAINT `fk_khach_hang_vai_tro`
 FOREIGN KEY (`vaitro_id`) REFERENCES `vai_tro` (`id`);
+
 ALTER TABLE `chi_tiet_gio_hang`
-  ADD CONSTRAINT `chi_tiet_gio_hang_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `gio_hang` (`cart_id`);
+ADD CONSTRAINT `chi_tiet_gio_hang_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `gio_hang` (`cart_id`);
   
+ALTER TABLE `gio_hang`
+ADD CONSTRAINT `gio_hang_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `khach_hang` (`customer_id`);
 -- Dữ liệu mẫu cho bảng `trang_thai`
 INSERT INTO `trang_thai` (`order_status`, `status`)
 VALUES (1, 'Mới'),

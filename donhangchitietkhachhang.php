@@ -11,47 +11,13 @@
 </head>
 
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.php"><img src="./hinh_anh/logomb.png" alt="logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Trang chủ</a></li>
-                    <li><a href="sanpham.php">Sản phẩm</a></li>
-                    <li><a href="#">Liên hệ</a></li>
-                </ul>
-            </nav>
-
-            <div class="cart">
-                <a href="giohang.php"><img src="./hinh_anh/logogiohang.png" alt="Giỏ hàng"></a>
-            </div>
-
-            <?php
-            session_start();
-            if (isset($_SESSION['username'])) {
-
-                echo "<div><a style='color:#fff; text-decoration: none;
-	  font-weight: bold;'  href='./donhang.html'>Đơn hàng</a></div>";
-                echo "<div><a style='color:#fff; text-decoration: none;
-	  font-weight: bold;'  href='thoat.php'>Đăng xuất</a></div>";
-                echo "<div><p style='color:#fff'>Chào mừng,<br>" . $_SESSION['username'] . "</p></div>";
-            } else {
-                echo "<div class='dangnhap'><a href='dangnhap.php'><img src='./hinh_anh/logodangnhap.png' alt='Đăng nhập'></a></div>";
-            }
-            ?>
-
-    </header>
+    <?php include 'header.php' ?>
     <br><br><br><br>
 
     <section>
         <div class="order">
             <h2>Chi tiết đơn hàng</h2>
-
             <?php
-
-
             include 'config.php';
             $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
 
@@ -71,13 +37,16 @@
                 $tongs = 0;
                 $index = 0;
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $product_id = $row['product_id'];
+                    $resultProduct =  mysqli_query($conn, "SELECT * from san_pham where product_id = $product_id");
+                    $rowItem = mysqli_fetch_assoc($resultProduct);
                     $index++;
                     $ma = $row['order_id'];
-                    $ten = $row['product_name'];
+                    $ten = $rowItem['product_name'];
                     $gia = $row['price'];
                     $soluong = $row['quantity'];
-                    $tong = $row['total_amount'];
-                    $tongs += $row['total_amount'];
+                    $tong = $row['quantity'] * $row['price'];
+                    $tongs += $row['quantity'] * $row['price'];
                 ?>
                     <tr>
                         <td>
