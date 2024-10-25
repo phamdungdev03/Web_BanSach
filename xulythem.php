@@ -11,7 +11,7 @@
         
         $hinhanh = $_FILES['hinhanh'];
         $hinhanh_ten = time() . '_' . basename($hinhanh['name']); 
-        $duongdan = 'hinh_anh/didong/' . $hinhanh_ten; 
+        $duongdan = 'hinh_anh/uploads/' . $hinhanh_ten; 
         $check = getimagesize($hinhanh['tmp_name']);
         if ($check !== false) {
             if (move_uploaded_file($hinhanh['tmp_name'], $duongdan)) {

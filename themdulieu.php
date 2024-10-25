@@ -138,7 +138,7 @@
                 return false;
             }
 
-            if (!hinhanh.match(/\.(jpg|jpeg|png|gif)$/i)) {
+            if (!hinhanh.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
                 alert('Vui lòng chọn file ảnh có định dạng jpg, jpeg, png hoặc gif.');
                 return false;
             }

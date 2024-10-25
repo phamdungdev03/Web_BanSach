@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title> Trang chủ - Website bán sách</title>
 	<link rel="stylesheet" href="./style.css">
-	<link rel="shortcut icon" href="./hinh_anh/logomb.png" />
+	<link rel="shortcut icon" href="./hinh_anh/Books Store.png" />
 </head>
 
 <body>
@@ -75,7 +75,6 @@
 			?>
 	</header>
 	<div class="container">
-
 		<main>
 			<div class="banner">
 				<div class="slideshow-container">
@@ -120,35 +119,9 @@
 			</div>
 
 
-			<div class="products">
-				<?php
-
-				$result = mysqli_query($conn, $sql);
-
-				while ($row = mysqli_fetch_assoc($result)) {
-					$ma = $row["product_id"];
-					$ten = $row["product_name"];
-					$anh = $row["product_image"];
-					$gia = $row["price"];
-					$parsed_gia = number_format($gia, 0, ",", ",");
-				}
-				?>
-				<div class="product">
-					<a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
-						<img src="./hinh_anh/didong/<?php echo $anh ?>" alt="iPhone">
-					</a>
-					<a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
-						<h2><?php echo $ten ?></h2>
-					</a>
-
-					<p><?php echo $parsed_gia ?>₫</p>
-					<button>
-						<a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>" class="btn">Xem chi tiết</a>
-					</button>
-
-				</div>
-
-			</div>
+			<?php 
+				require("./card_sanpham.php");
+			?>
 		</main>
 
 	</div>

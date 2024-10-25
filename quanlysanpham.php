@@ -115,7 +115,7 @@
                             </td>
     
                             <td>
-                                <img src="./hinh_anh/didong/<?php echo  $hinhanh ?>" style=" max-width: 60px;" alt="iPhone">
+                                <img src="./hinh_anh/uploads/<?php echo  $hinhanh ?>" style=" max-width: 60px;" alt="iPhone">
                             </td>
                             <td>
                                 <?php
