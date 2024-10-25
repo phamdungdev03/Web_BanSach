@@ -12,16 +12,16 @@
 
 <body>
   <div class="header">
-    <div class="logo">HUNG MOBILE</div>
+    <div class="logo">BOOK STORE</div>
     <div class="user-info">
       <?php
-      session_start();
-      if (isset($_SESSION['username'])) {
-        echo "<a href='thoat.php' >Đăng xuất</a>";
-        echo "<p>Chào mừng,<br>" . $_SESSION['username'] . "</p>";
-      } else {
-        echo  "<a href='dangnhap.php'>Đăng nhập</a>";
-      }
+        session_start();
+        if (isset($_SESSION['username'])) {
+          echo "<a href='thoat.php' >Đăng xuất</a>";
+          echo "<p>Chào mừng,<br>" . $_SESSION['username'] . "</p>";
+        } else {
+          echo  "<a href='dangnhap.php'>Đăng nhập</a>";
+        }
       ?>
     </div>
   </div>
@@ -61,26 +61,22 @@
       <?php
 
       include 'config.php';
-      $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+      $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
       $sql = "SELECT * FROM `khach_hang` WHERE `id` = 2";
       $result = mysqli_query($conn, $sql);
 
 
       ?>
-      <div class="div1">
-        <h3 align="center">Liệt kê khách hàng</h3>
+      <div class="box_title">
+        <h3 class="text-center">Liệt kê khách hàng</h3>
+      </div>
+      <div class="box_btn-add">
+        <button type="button" class="btn_add-client"> <a style="text-decoration: none;color: aliceblue;" href="themkhachhang.php">Thêm mới</a> </button>
       </div>
       </table>
-      <table class="bangchinh" border="1" align="center" cellspacing="0" width="100%">
-        <tr>
-          <td colspan="7" align="center">
-            <button type="button" class="brcl1"> <a style="text-decoration: none;color: aliceblue;" href="themkhachhang.php">Thêm mới khách hàng</a> </button>
-          </td>
-
-        </tr>
+      <table class="bangchinh" align="center" cellspacing="0" width="100%">
         <tr>
           <th>STT</th>
-          <th>Mã khách hàng</th>
           <th>Tên khách hàng</th>
           <th>Địa chỉ</th>
           <th>Email</th>
@@ -100,40 +96,29 @@
           <tr>
             <td>
               <?php
-              echo  $index
+                echo  $index
+              ?>
+            </td>
+            <td>
+              <?php 
+                echo  $ten
               ?>
             </td>
             <td>
               <?php
-              echo      $ma
+                echo  $diachi;
               ?>
-            </td>
-
-            <td>
-
-              <?php echo  $ten
-              ?>
-
-
-
             </td>
             <td>
               <?php
-              echo    $diachi;
+                echo  $email
               ?>
 
             </td>
             <td>
               <?php
-              echo    $email
+                echo   $phone
               ?>
-
-            </td>
-            <td>
-              <?php
-              echo   $phone
-              ?>
-
             </td>
             <td>
               <div style="display: flex;">
@@ -143,8 +128,6 @@
                 <button type="button" class="brcl2">
                   <a style="text-decoration: none; color: aliceblue;" href="xoakhachhang.php?idSV=<?php echo $ma;  ?>">Xóa</a>
                 </button type="button">
-
-
             </td>
           </tr>
         <?php
@@ -153,15 +136,11 @@
         <?php
         mysqli_close($conn);
         ?>
-
       </table>
     </div>
 
   </section>
-  <br>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-  <footer style="margin-top:100px">
+  <footer>
         <p>Lê Thị Phương Thảo - 18/09/2003 </p>
         <p>Nguyễn Văn Quang - 10/08/2003</p>
         <p>Ngô Văn Thông - 09/06/2003</p>

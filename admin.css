@@ -15,6 +15,10 @@ nav {
   list-style: none;
 }
 
+.text-center{
+  align-items: center;
+}
+
 .nav-links li a {
   color: #333;
   font-weight: bold;
@@ -46,14 +50,8 @@ nav {
 .hero {
   margin-left: 300px;
   background-color: #f2f2f2;
-  padding: 20px 100px;
-  display: flex;
-  align-items: center;
-  width: 65%;
-}
-
-.hero-text {
-  margin-right: 50px;
+  padding: 20px;
+  min-height: 90vh;
 }
 
 .hero h1 {
@@ -80,10 +78,11 @@ footer {
 .brcl{
   background-color: rgb(61, 61, 241);
   color: aliceblue;
-  border: rgb(59, 123, 202);
+  border: none;
   border-radius: 22px;
-  padding: 5px 5px;
-  width: 50px; height:30px;
+  padding: 8px;
+  width: 60px;
+  height:30px;
   margin-left: 5px;
 }
 .brcl1{
@@ -93,34 +92,35 @@ footer {
   border-radius: 22px;
   padding: 5px 5px;
   width: 100px; height:50px;
-
 }
 .sae{
   border-radius: 5px;
   height: 30px;
 }
 .scc{
-border-radius: 5px;
-height: 35px;
-cursor: pointer;
-background-color: rgb(80, 87, 117);
-color: aliceblue;
+  border-radius: 5px;
+  height: 35px;
+  cursor: pointer;
+  background-color: rgb(80, 87, 117);
+  color: aliceblue;
 }
 .brcl2{
   background-color: rgb(241, 130, 61);
   color: aliceblue;
   border: rgb(202, 161, 59);
   border-radius: 22px;
-  padding: 5px 5px;
-  width: 50px; height:30px;
+  padding: 6px;
+  width: 60px;
+  height:30px;
 }
 .brcl3{
-background-color: rgb(9, 110, 31);
-color: aliceblue;
-border: rgb(67, 169, 42);
-border-radius: 22px;
-padding: 5px 5px;
-width: 50px; height:30px;
+  background-color: rgb(9, 110, 31);
+  color: aliceblue;
+  border: rgb(67, 169, 42);
+  border-radius: 22px;
+  padding: 6px;
+  width: 60px; 
+  height:30px;
 }
 th{
   background-color: rgb(87, 190, 242);
@@ -129,21 +129,57 @@ th{
 }
 .bangchinh th{
   padding: 10px 5px;
-  border: 1px solid rgb(105, 102, 102);
+  /* border: 1px solid rgb(105, 102, 102); */
 }
 .bangchinh td{
   padding: 10px ;
-  border: 1px solid rgb(111, 108, 108);
+  font-size: 16px;
+  /* border: 1px solid rgb(111, 108, 108); */
 }
 
 .div1{
   text-transform: uppercase;
-  height: 50px;
-  font-size: 30px;
+  height: 40px;
+  font-size: 22px;
+  padding: 0 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
+}
+
+.box_title{
+  text-transform: uppercase;
+  height: 40px;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.btn_add-client{
+  padding: 12.5px 30px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #2ba8fb;
+  color: #ffffff;
+  font-weight: Bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.btn_add-client:hover {
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px #6fc5ff50;
+  transform: scale(1.1);
+}
+
+.btn_add-client:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
 }
 
 /* css cho admin */
@@ -220,3 +256,41 @@ th{
   color: #6b7280; 
 }
 
+
+.input {
+  background-color: #f9fafb;
+  border: 1px solid #d1d5db;
+  color: #1f2937;
+  font-size: 14px;
+  border-radius: 8px;
+  margin: 10px 0;
+  width: 100%;
+  padding: 10px;
+}
+.input:focus {
+  outline: none;
+  border-color: #333;
+  box-shadow: 0 0 0 1px #333;
+}
+
+.textarea {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  font-size: 14px;
+  color: #1f2937; 
+  background-color: #f9fafb; 
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #3b82f6; 
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); 
+}
+
+.box_btn-add{
+  float: right;
+  margin: 0 0 16px 0; 
+}
