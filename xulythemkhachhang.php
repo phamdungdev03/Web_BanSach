@@ -16,19 +16,6 @@ if (empty($_POST['sdt'])) {
     exit;
 }
 
-if (empty($_POST['city'])) {
-    echo "Bạn chưa điền tỉnh! <a  href='javascript:history.back()'> Quay lại</a>";
-    exit;
-}
-
-if (empty($_POST['district'])) {
-    echo "Bạn chưa điền huyện! <a  href='javascript:history.back()'> Quay lại</a>";
-    exit;
-}
-if (empty($_POST['ward'])) {
-    echo "Bạn chưa điền xã! <a  href='javascript:history.back()'> Quay lại</a>";
-    exit;
-}
 if (empty($_POST['diachicuthe'])) {
     echo "Bạn chưa điền địa chỉ cụ thể! <a  href='javascript:history.back()'> Quay lại</a>";
     exit;

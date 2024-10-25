@@ -115,14 +115,11 @@
                     </button>
                 </form>
             </div>
+            <div class="box_btn-add">
+                <button type="button" class="brcl1"> <a style="text-decoration: none;color: aliceblue;" href="themdulieu.php">Thêm mới</a> </button>
+            </div>
 
-
-            <table class="bangchinh" border="1" align="center" cellspacing="0" width="100%">
-                <tr>
-                    <td colspan="7" align="center">
-                        <button type="button" class="brcl1"> <a style="text-decoration: none;color: aliceblue;" href="themdulieu.php">Thêm mới</a> </button>
-                    </td>
-                </tr>
+            <table class="bangchinh" align="center" cellspacing="0" width="100%">
                 <tr>
                     <th>STT</th>
                     <th>Tên Sách</th>
@@ -158,16 +155,16 @@
                         </td>
                         <td>
                             <?php
-                            echo  number_format($gia, 0, ",", ",");
+                                echo  number_format($gia, 0, ",", ",");
                             ?>
                         </td>
-                        <td>
+                        <td >
                             <?php
-                            echo $soluong
+                                echo "$soluong cuốn sách" 
                             ?>
                         </td>
                         <td>
-                            <div style="display: flex;">
+                            <div style="display: flex; justify-content: space-around;">
                                 <button type="button" class="brcl3">
                                     <a style="text-decoration: none; color: aliceblue;" href="motasp.php?idSV=<?php echo $maSp;  ?>">Mô tả</a>
                                 </button type="button">

@@ -1,114 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<title>Thêm mới sản phẩm</title>
-	<style>
-		label {
-			display: inline-block;
-			width: 120px;
-			text-align: right;
-			margin-right: 10px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Mới Sản Phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            max-width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .input,
+        .textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #f9fafb;
+            transition: border-color 0.3s;
+        }
+
+		.select{
+			width: calc(100%);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #f9fafb;
+            transition: border-color 0.3s;
 		}
 
-		input[type="text"],
-		input[type="number"],
-		select {
-			width: 300px;
-			padding: 5px;
-			margin-bottom: 10px;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-		}
+        .input:focus,
+        .select:focus,
+        .textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+            outline: none;
+        }
 
-		table {
-			border: 1px solid black;
-		}
-		input[type="text"],
-		input[type="number"],
-		input[type="file"] {
-			border: 1px solid black;
-			padding: 5px;
-			margin: 5px;
-			width: 300px;
-		}
-		form {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			height: 100vh;
-		}
-		button {
-			padding: 10px;
-			background-color: #4CAF50;
-			color: white;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-		}
-		button[type="reset"] {
-			margin-left: 10px;
-		}
-	</style>
+        .textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button[type="reset"] {
+            background-color: #f44336;
+            margin-top: 10px;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #d32f2f;
+        }
+    </style>
 </head>
 
 <body>
+    <form action="xulythem.php" method="POST" enctype="multipart/form-data">
+        <h1>Thêm Mới Sản Phẩm</h1>
+        <label for="ten_sanpham">Tên sản phẩm:</label>
+        <input type="text" name="ten_sanpham" id="ten_sanpham" class="input" required>
 
-	<form action="xulythem.php" method="POST">
-		<h1>Thêm mới sản phẩm</h1>
-		<table>
-			<tr>
-				<td class="label"><label for="ten_sanpham">Tên sản phẩm:</label></td>
-				<td><input type="text" name="ten_sanpham" id="mota"></td>
-			</tr>
-			<tr>
-				<td class="label"><label for="hang_sua">Mô tả:</label></td>
-				<td> <textarea type="text" name="mota" id="mota" rows="10" cols="50">
+        <label for="mota">Mô tả:</label>
+        <textarea name="mota" id="mota" class="textarea" placeholder="Nhập mô tả sản phẩm" required></textarea>
 
-                </textarea> </td>
-			</tr>
-			<tr>
-				<td class="label"><label for="loai_sua">Giá:</label></td>
-				<td><input type="text" name="gia" id="lgia"></td>
-			</tr>
-			<tr>
-				<td class="label"><label for="soluonghangton">Số lượng hàng tồn:</label></td>
-				<td><input type="number" name="soluonghangton" id="soluonghangton"></td>
-			</tr>
-			<tr>
-				<td>Danh mục sản phẩm</td>
-				<td class="label">
-					<select name="danhmuc">
-						<?php
-						include 'config.php';
-						$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
-						$sql = "SELECT * FROM `danh_muc_san_pham`";
-						$result = mysqli_query($conn, $sql);
-						while ($row = mysqli_fetch_assoc($result)) {
-							$madm = $row["category_id"];
-							$tendm = $row["category_name"];
+        <label for="gia">Giá:</label>
+        <input type="text" name="gia" id="gia" class="input" required>
 
-						?>
-							<option
-								value="<?php echo $madm; ?>"><?php echo $tendm; ?></option>
-						<?php
-						}
-						?>
-					</select>
-				</td>
+        <label for="soluonghangton">Số lượng hàng tồn:</label>
+        <input type="number" name="soluonghangton" id="soluonghangton" class="input" required>
 
-			</tr>
-			<tr>
-				<td class="label"><label for="hinhanh">Hình ảnh:</label></td>
-				<td><input type="file" name="hinhanh" id="hinhanh"></td>
-			</tr>
-		</table>
-		<div class="buttons">
-			<button type="submit" id="btn" name="btnSave">Lưu sản phẩm</button>
-			<button type="reset">Nhập lại</button>
-		</div>
-	</form>
+        <label for="danhmuc">Danh mục sản phẩm:</label>
+        <select name="danhmuc" id="danhmuc" class="select" required>
+            <?php
+            include 'config.php';
+            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
+            $sql = "SELECT * FROM `danh_muc_san_pham`";
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $madm = $row["category_id"];
+                $tendm = $row["category_name"];
+            ?>
+                <option value="<?php echo $madm; ?>"><?php echo $tendm; ?></option>
+            <?php
+            }
+            ?>
+        </select>
+
+        <label for="hinhanh">Hình ảnh:</label>
+        <input type="file" name="hinhanh" id="hinhanh" class="input" required>
+
+        <button type="submit" name="btnSave">Lưu Sản Phẩm</button>
+        <button type="reset">Nhập Lại</button>
+    </form>
 </body>
 
 </html>
