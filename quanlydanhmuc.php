@@ -63,7 +63,7 @@
                 $sql = "SELECT * From `danh_muc_san_pham`";
                 $result = mysqli_query($conn, $sql);
             ?>
-            <div style='margin-left: 160px;'>
+            <div>
                 <div class="div1">
                     <h3 align="center">Quản lý danh mục sản phẩm </h3>
                 </div>
@@ -79,13 +79,11 @@
                     </td>
                     </tr>
                     <td class="label"><label for="ten_danhmuc">Tên:</label></td>
-                    <td colspan="2"><input type="text" name="ten_danhmuc" id="mota"></td>
+                    <td colspan="2"><input type="text" name="ten_danhmuc" id="mota" class="input" required></td>
                     </tr>
                     <tr>
                         <td class="label"><label for="mota">Mô tả:</label></td>
-                        <td colspan="2"> <textarea type="text" name="mota" id="mota" rows="10" cols="50">
-
-                </textarea> </td>
+                        <td colspan="2"><textarea id="message" rows="4" class="textarea" placeholder="Write your thoughts here..." required></textarea></td>
                     </tr>
                     <td colspan="3" align="center">
                         <button type="submit" name="btnSave" class="brcl1">Thêm mới </button>
@@ -144,7 +142,7 @@
     </section>
     </div>
 
-    <footer style="margin-top:100px">
+    <footer>
         <p>Lê Thị Phương Thảo - 18/09/2003 </p>
         <p>Nguyễn Văn Quang - 10/08/2003</p>
         <p>Ngô Văn Thông - 09/06/2003</p>
