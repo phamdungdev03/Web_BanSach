@@ -81,8 +81,32 @@
     margin-top: -10px;
     margin-bottom: 10px;
   }
-</style>
 
+  input[type=submit] {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+
+  input[type=submit]:hover {
+    background-color: #0056b3;
+  }
+
+  .form-footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .form-footer a {
+    font-size: 14px;
+  }
+</style>
 <a class="back-link" href="javascript:history.back()">&#8592; Quay lại</a>
 
 <div class="form-container">
