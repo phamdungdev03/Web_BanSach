@@ -10,37 +10,8 @@ nav {
     width: 200px;
   }
 
-.nav-links li {
-  margin: 16px 10px;
-  list-style: none;
-}
-
 .text-center{
   align-items: center;
-}
-
-.nav-links li a {
-  color: #333;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 18px;
-}
-
-.nav-links li a:hover {
-  color: #f90;
-}
-
-.menu{
-  width: 100%;
-  padding: 10px;
-  margin: 2px 0;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.menu:hover{
-  background: #E1DBC8;
 }
 
 .hero-image img{
@@ -48,10 +19,10 @@ nav {
 }
 
 .hero {
-  margin-left: 300px;
   background-color: #f2f2f2;
-  padding: 20px;
   min-height: 90vh;
+  width: calc(100%);
+  padding: 20px;
 }
 
 .hero h1 {
@@ -122,19 +93,55 @@ footer {
   width: 60px; 
   height:30px;
 }
-th{
-  background-color: rgb(87, 190, 242);
-  color: aliceblue;
-  text-transform: uppercase;
+/* css table */
+.bangchinh {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
-.bangchinh th{
-  padding: 10px 5px;
-  /* border: 1px solid rgb(105, 102, 102); */
+
+.bangchinh th, .bangchinh td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
 }
-.bangchinh td{
-  padding: 10px ;
-  font-size: 16px;
-  /* border: 1px solid rgb(111, 108, 108); */
+
+.bangchinh th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.brcl3, .brcl, .brcl2 {
+  background-color: #007bff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.brcl3:hover {
+  background-color: #0056b3;
+}
+
+.brcl:hover {
+  background-color: #28a745;
+}
+
+.brcl2:hover {
+  background-color: #dc3545;
+}
+
+.brcl3 a, .brcl a, .brcl2 a {
+  color: white;
+  text-decoration: none;
 }
 
 .div1{
@@ -293,4 +300,63 @@ th{
 .box_btn-add{
   float: right;
   margin: 0 0 16px 0; 
+}
+
+/* From Uiverse.io by andrew-demchenk0 */ 
+.button {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #34974d;
+  background-color: #3aa856;
+  text-decoration: none;
+}
+
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(30px);
+  color: #fff;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: #34974d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .svg {
+  width: 30px;
+  stroke: #fff;
+}
+
+.button:hover {
+  background: #34974d;
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active .button__icon {
+  background-color: #2e8644;
+}
+
+.button:active {
+  border: 1px solid #2e8644;
 }
