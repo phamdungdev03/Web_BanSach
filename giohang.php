@@ -23,36 +23,101 @@
     $error = false;
     $success = false;
     if (isset($_GET['action'])) {
-      function update_cart($add = false)
+      function addToCart($customer_id, $product_id, $quantity)
       {
-        foreach ($_POST['quantity'] as $id => $quantity) {
-          if ($quantity == 0) {
-            unset($_SESSION["cart"][$id]);
+        include 'config.php';
+        $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
+        $sql1 = "SELECT cart_id FROM gio_hang WHERE customer_id = $customer_id";
+        $result1 = $conn->query($sql1);
+
+        if ($result1->num_rows > 0) {
+          $row = $result1->fetch_assoc();
+          $cart_id = $row['cart_id'];
+        } else {
+          $sql2 = "INSERT INTO gio_hang (customer_id) VALUES ($customer_id)";
+          if ($conn->query($sql2) === TRUE) {
+            $cart_id = $conn->insert_id;
           } else {
-            if ($add) {
-              $_SESSION["cart"][$id] += $quantity;
-            } else {
-              $_SESSION["cart"][$id] = $quantity;
-            }
+            echo "Error: " . $sql2 . "<br>" . $conn->error;
+            return;
+          }
+        }
+
+        $sql3 = "SELECT quantity FROM chi_tiet_gio_hang WHERE cart_id = $cart_id AND product_id = $product_id";
+        $result3 = $conn->query($sql3);
+
+        $sql7 = "SELECT * from san_pham where product_id = $product_id";
+        $resultProduct = $conn->query($sql7);
+
+        if ($resultProduct->num_rows > 0) {
+          $product = $resultProduct->fetch_assoc();
+          $price = $product['price'];
+        }
+
+        if ($result3->num_rows > 0) {
+
+          $row = $result3->fetch_assoc();
+          $new_quantity = $row['quantity'] + $quantity;
+          $sql4 = "UPDATE chi_tiet_gio_hang SET quantity = $new_quantity WHERE cart_id = $cart_id AND product_id = $product_id";
+          $conn->query($sql4);
+        } else {
+          $sql5 = "INSERT INTO chi_tiet_gio_hang (cart_id, product_id, quantity, price) VALUES ($cart_id, $product_id, $quantity, $price)";
+          $conn->query($sql5);
+        }
+      }
+
+      function updateCart($cart_id, $product_id, $quantity)
+      {
+        include 'config.php';
+        $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
+        if ($quantity > 0) {
+          $sql = "UPDATE chi_tiet_gio_hang SET quantity = $quantity Where cart_id = $cart_id and product_id = $product_id";
+          $conn->query($sql);
+        }
+      }
+
+      function deleteCart($cart_id, $cart_item_id)
+      {
+        include 'config.php';
+        $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
+        $sql = "DELETE FROM chi_tiet_gio_hang WHERE id = $cart_item_id";
+        $conn->query($sql);
+
+        $sql_check = "SELECT COUNT(*) as total FROM chi_tiet_gio_hang WHERE cart_id = $cart_id";
+        $result = $conn->query($sql_check);
+        if ($result) {
+          $row = $result->fetch_assoc();
+          $total = $row['total'];
+          if ($total == 0) {
+            $sql_delete = "DELETE FROM gio_hang where cart_id = $cart_id";
+            $conn->query($sql_delete);
           }
         }
       }
       switch ($_GET['action']) {
         case "add";
-          // var_dump($_POST);exit;
-          update_cart(true);
-          // var_dump( $_SESSION["cart"]);exit;
+          $customer_id = $_SESSION['user_id'];
+          if (isset($_POST['quantity'])) {
+            foreach ($_POST['quantity'] as $productID => $quantity) {
+              addToCart($customer_id, $productID, $quantity);
+            }
+          }
           header("location:giohang.php");
           break;
         case "delete":
-          if (isset($_GET['id'])) {
-            unset($_SESSION["cart"][$_GET['id']]);
+          if (isset($_GET['id']) && isset($_GET['cart_id'])) {
+            $cart_item_id = intval($_GET['id']);
+            $cart_id = intval($_GET['cart_id']);
+            deleteCart($cart_id, $cart_item_id);
           }
           header("location:giohang.php");
           break;
         case "submit":
-          if (isset($_POST['update_click'])) { // cập nhật số lượng sản phẩm
-            update_cart();
+          if (isset($_POST['update_click'])) {
+            $cart_id = intval($_POST['cart_id']);
+            $quantity = intval($_POST['quantity']);
+            $product_id = intval($_POST['product_id']);
+            updateCart($cart_id, $product_id, $quantity);
             header("location:giohang.php");
           } else if (isset($_POST['order_click'])) // đặt hàng sản phẩm
           {
@@ -60,12 +125,6 @@
               $error = "Bạn chưa nhập tên của người nhận";
             } else if (empty($_POST['sdt'])) {
               $error = "Bạn chưa nhập số điện thoại";
-            } else if (empty($_POST['city'])) {
-              $error = "Bạn chưa chưa chọn tỉnh thành phố";
-            } else if (empty($_POST['district'])) {
-              $error = "Bạn chưa chưa chọn quận huyện";
-            } else if (empty($_POST['ward'])) {
-              $error = "Bạn chưa chưa chọn xa phuong";
             } else if (empty($_POST['diachicuthe'])) {
               $error = "Bạn chưa chưa nhập địa chỉ cụ thể";
             } else if (empty($_POST['email'])) {
@@ -127,11 +186,14 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
           break;
       }
     }
-    if (!empty($_SESSION["cart"])) {
-      $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
-
-      $sql = " SELECT * FROM `san_pham` WHERE `product_id` IN (" . implode(",", array_keys($_SESSION["cart"])) . ")";
-    }
+    $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
+    $customer_id = $_SESSION['user_id'];
+    $sql = "SELECT san_pham.product_name, san_pham.product_image,gio_hang.cart_id,chi_tiet_gio_hang.id, chi_tiet_gio_hang.price, chi_tiet_gio_hang.quantity, chi_tiet_gio_hang.product_id 
+        FROM gio_hang 
+        JOIN chi_tiet_gio_hang ON gio_hang.cart_id = chi_tiet_gio_hang.cart_id 
+        JOIN san_pham ON chi_tiet_gio_hang.product_id = san_pham.product_id
+        WHERE gio_hang.customer_id = $customer_id";
+    $result = mysqli_query($conn, $sql);
   ?>
     <br>
     <br>
@@ -165,13 +227,11 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
                 <th>Giá</th>
                 <th>Số lượng</th>
                 <th>Thành tiền</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
               <?php
-              if (!empty($sql)) {
-                $result = mysqli_query($conn, $sql);
+              if ($result && mysqli_num_rows($result) > 0) {
                 $total = 0;
                 $index = 1;
                 while ($row = mysqli_fetch_array($result)) {   ?>
@@ -179,17 +239,20 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
                     <td><?= $index; ?></td>
                     <td><?= $row["product_name"] ?></td>
                     <td><img src="./hinh_anh/didong/<?= $row["product_image"] ?>" alt=""></td>
-                    <td class="gia"><?= $parsed_gia = number_format($row["price"], 0, ",", ","); ?>₫</td>
-                    <td><input size="1" name="quantity[<?= $row["product_id"] ?>]" type="text" value="<?= $_SESSION["cart"][$row["product_id"]] ?>"></td>
-                    <td class="gia"><?= $parsed_gia = number_format($_SESSION["cart"][$row["product_id"]] * $row["price"], 0, ",", ","); ?>₫ </td>
-                    <td><a href="giohang.php?action=delete&id=<?= $row["product_id"] ?>" style=" text-decoration: none;">
+                    <td class="gia"><?= number_format($row["price"], 0, ",", ","); ?>₫</td>
+                    <td><input size="1" name="quantity" type="number" value="<?= $row["quantity"] ?>"></td>
+                    <input type="hidden" name="cart_id" value="<?= $row["cart_id"] ?>">
+                    <input type="hidden" name="product_id" value="<?= $row["product_id"] ?>">
+                    <td class="gia"><?= number_format($row["quantity"] * $row["price"], 0, ",", ","); ?>₫</td>
+                    <td><a href="giohang.php?action=delete&id=<?= $row["id"] ?>&cart_id=<?= $row["cart_id"] ?>" style="text-decoration: none;">
                         <div class="remove">Xóa</div>
                       </a></td>
                   </tr>
                 <?php
-                  $total += $_SESSION["cart"][$row["product_id"]] * $row["price"];
+                  $total += $row["quantity"] * $row["price"];
                   $index++;
-                } ?>
+                }
+                ?>
             </tbody>
 
             <tr>
@@ -218,21 +281,6 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
       <div class="total">
         <input type="text" name="ten" placeholder="Người nhận" />
         <input type="text" name="sdt" placeholder="Số điện thoại" />
-        <div>
-          <select id="city" name="city">
-            <option value="" name="city" selected>Chọn tỉnh thành</option>
-          </select>
-
-          <select id="district" name="district">
-            <option value="" name="district" selected>Chọn quận huyện</option>
-          </select>
-
-          <select id="ward" name="ward">
-            <option value="" name="ward" selected>Chọn phường xã</option>
-          </select>
-
-
-        </div>
         <input type="text" name="diachicuthe" placeholder="Địa chỉ cụ thể" />
         <input type="email" name="email" placeholder="Email" />
         <input class="checkout" type="submit" name="order_click" value="Đặt hàng">
@@ -245,13 +293,6 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
 
 
       </div>
-      <footer style="margin-top:20px;">
-        <div class="footer-ct">
-          <p>Nguyễn Phi Hùng - 10/08/2002 </p>
-          <p>Website bán điện thoại di động &copy; 2023</p>
-        </div>
-
-      </footer>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
       <script>
@@ -261,60 +302,9 @@ VALUES ('[value-1a]', '[value-2a]', '[value-3a]', '[value-4a]', '[value-5a]', '[
           echo "window.location.href='index.php';";
           ?>
         }
-        //   xử lý địa chỉ
-        const host = "https://provinces.open-api.vn/api/";
-        var callAPI = (api) => {
-          return axios.get(api)
-            .then((response) => {
-              renderData(response.data, "city");
-            });
-        }
-        callAPI('https://provinces.open-api.vn/api/?depth=1');
-        var callApiDistrict = (api) => {
-          return axios.get(api)
-            .then((response) => {
-              renderData(response.data.districts, "district");
-            });
-        }
-        var callApiWard = (api) => {
-          return axios.get(api)
-            .then((response) => {
-              renderData(response.data.wards, "ward");
-            });
-        }
-
-        var renderData = (array, select) => {
-          let row = ' <option disable value="">Chọn</option>';
-          array.forEach(element => {
-            row += `<option data-id="${element.code}" value="${element.name}">${element.name}</option>`
-          });
-          document.querySelector("#" + select).innerHTML = row
-        }
-
-        $("#city").change(() => {
-          callApiDistrict(host + "p/" + $("#city").find(':selected').data('id') + "?depth=2");
-          printResult();
-        });
-        $("#district").change(() => {
-          callApiWard(host + "d/" + $("#district").find(':selected').data('id') + "?depth=2");
-          printResult();
-        });
-        $("#ward").change(() => {
-          printResult();
-        })
-
-        var printResult = () => {
-          if ($("#district").find(':selected').data('id') != "" && $("#city").find(':selected').data('id') != "" &&
-            $("#ward").find(':selected').data('id') != "") {
-            let result = $("#city option:selected").text() +
-              " | " + $("#district option:selected").text() + " | " +
-              $("#ward option:selected").text();
-            $("#result").text(result)
-          }
-
-        }
       </script>
-  <?php }
+  <?php
+    }
   } else {
     echo "Bạn không thể thêm hoặc vào giỏ hàng vì chưa đăng nhập. Vui lòng đăng nhập tại đây.<a href='dangnhap.php'>Đăng nhập</a>";
   }

@@ -5,46 +5,13 @@
 <link rel="stylesheet" href="./chitietsanpham.css">
 <link rel="shortcut icon" href="./hinh_anh/logomb.png" />
 <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 <head>
 </head>
 
 <body>
-  <header>
-    <div class="header-container">
-      <div class="logo">
-        <a href="index.php"><img src="./hinh_anh/logomb.png" alt="logo"></a>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.php">Trang chủ</a></li>
-          <li><a href="sanpham.php">Sản phẩm</a></li>
-          <li><a href="#">Liên hệ</a></li>
-        </ul>
-      </nav>
-
-
-      <div class="cart">
-        <a href="giohang.php"><img src="./hinh_anh/logogiohang.png" alt="Giỏ hàng"></a>
-
-
-      </div>
-
-      <?php
-      session_start();
-      if (isset($_SESSION['username'])) {
-        echo "<div><a style='color:#fff; text-decoration: none;
-	  font-weight: bold;'  href='./donhang.php'>Đơn hàng</a></div>";
-        echo "<div><a style='color:#fff; text-decoration: none;
-	  font-weight: bold;'  href='thoat.php'>Đăng xuất</a></div>";
-        echo "<div><p style='color:#fff'>Chào mừng,<br>" . $_SESSION['username'] . "</p></div>";
-      } else {
-        echo "<div class='dangnhap'><a href='dangnhap.php'><img src='./hinh_anh/logodangnhap.png' alt='Đăng nhập'></a></div>";
-      }
-      ?>
-
-
-  </header>
+  <?php include 'header.php' ?>
 
   <br><br><br><br> <br>
   <?php
@@ -63,37 +30,50 @@
   }
 
   ?>
-  <div class="product-detail">
-    <a href="index.php" style="   text-decoration: none;">&larr; Trang chủ</a>
-    <br>
-    <br>
-    <hr>
-    <br>
-    <h2 class="product-name"><?php echo $ten ?></h2>
-    <br>
-    <hr>
-    <br>
-    <div class="product-detail-tt">
-      <img src="./hinh_anh/didong/<?php echo $anh ?>" alt="Product Image">
-      <div>
-        <p style="font-size: 30px;">Mua ngay</p>
-        <h3 class="product-price"><strong><?php echo $parsed_gia ?> ₫</strong></h3>
-        <p class="product-description"><?php echo $mota ?></p>
-        <!-- <a href="them-vao-gi o-hang.php?product_id=<?php echo $ma ?>"> -->
-        <p style="
-  margin: 20px 0 0 0;
-  font-size: 18px;
-  font-weight: bold;">Số lượng</p>
-        <form action="giohang.php?action=add" method="POST">
-          <input type="text" value="1" name="quantity[<?php echo $ma ?>]" size="2">
-          <br>
-          <input class="add-to-cart-btn" id="add-to-cart-btn" onclick="addToCart()" type="submit" value="Mua sản phẩm">
-          <!-- <button class="add-to-cart-btn" id ="add-to-cart-btn" onclick="addToCart()">+ Thêm vào giỏ hàng</button> -->
-        </form>
-        <!-- </a> -->
-
+  <div class="product container">
+    <div class="navigate-home">
+      <a href="index.php">
+        <i class="fa-solid fa-left-long"></i>
+        Trang chủ
+      </a>
+    </div>
+    <div class="product-info">
+      <img src="./hinh_anh/didong/<?php echo $anh ?>" alt="">
+      <div class="product-info-detail">
+        <p class="product-info-title"><?php echo $ten ?></p>
+        <div class="product-info-review">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="product-info-price">
+          <p class="old-price"><?php echo $parsed_gia ?></p>
+          <p class="new-price"><?php echo $parsed_gia ?></p>
+        </div>
+        <div class="product-info-quantity">
+          <form action="giohang.php?action=add" method="POST">
+            <div class="product-info-quantity__number">
+              <span id="prev">-</span>
+              <input type="number" id="quantity" value="1" name="quantity[<?php echo $ma ?>]">
+              <span id="add">+</span>
+            </div>
+            <div class="product-btn">
+              <input type="submit" name="" id="" onclick="addToCart()" value="Thêm vào giỏ hàng">
+              <input type="submit" id="add-to-cart-btn" onclick="addToCart()" value="Mua Ngay">
+            </div>
+          </form>
+        </div>
       </div>
-
+    </div>
+    <div class="product-description">
+      <div class="product-description-title">
+        <span>Mô Tả</span>
+      </div>
+      <div class="product-description-content">
+        <p><?php echo $mota ?></p>
+      </div>
     </div>
   </div>
 
@@ -101,7 +81,7 @@
     <br>
     <hr>
     <br>
-    <h1 style="font-size: 2.5em;"> Các sản phẩm khác</h1>
+    <h1 style="font-size: 20px;"> Các sản phẩm khác</h1>
     <br>
     <hr>
     <br>
@@ -152,5 +132,20 @@
       echo "alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!');";
     }
     ?>
+  }
+  var prev = document.getElementById("prev");
+  var add = document.getElementById("add");
+  var quantity = document.getElementById("quantity");
+
+  prev.onclick = () => {
+    var currentValue = parseInt(quantity.value);
+    if (currentValue > 1) {
+      quantity.value = currentValue - 1;
+    }
+  }
+
+  add.onclick = () => {
+    var currentValue = parseInt(quantity.value);
+    quantity.value = currentValue + 1;
   }
 </script>

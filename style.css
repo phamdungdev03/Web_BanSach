@@ -40,7 +40,7 @@ header {
   z-index: 999;
 
 }
-
+/* 
 input[type=text] {
   padding: 10px;
   border: 1px solid #37353595;
@@ -66,7 +66,7 @@ input[type=submit]:hover {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
+} */
 
 /* Banner __________________________________________________*/
 .banner img {
@@ -222,7 +222,7 @@ nav a {
 }
 
 
-.product {
+/* .product {
   flex-basis: calc(13% - 16px);
   margin-right: 20px;
   margin-bottom: 20px;
@@ -251,7 +251,6 @@ nav a {
 }
 
 .btn {
-  /* display: inline-block; */
   color: #f9f9f9;
   text-decoration: none;
   border-radius: 5px;
@@ -292,7 +291,7 @@ nav a {
   color: #e10c00;
   vertical-align: middle;
   margin-right: 10px;
-}
+} */
 
 /* Menu trái */
 .sidebar {
