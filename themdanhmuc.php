@@ -53,7 +53,7 @@
     <!-- <input type="text"  name="ten_danhmuc" id="mota" placeholder="Nhập tên danh mục" required> -->
     <input type="text" name="ten_danhmuc" id="mota" class="input" required>
     <label for="message">Mô tả:</label>
-    <textarea id="message" class="textarea" placeholder="Write your thoughts here..." required></textarea>
+    <textarea id="message" name="mota" class="textarea" placeholder="Write your thoughts here..." required></textarea>
 
     <button type="submit" name="btnSave">Thêm mới</button>
 </form>

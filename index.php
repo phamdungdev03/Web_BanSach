@@ -7,10 +7,11 @@
 	<title> Trang chủ - Website bán sách</title>
 	<link rel="stylesheet" href="./style.css">
 	<link rel="shortcut icon" href="./hinh_anh/Books Store.png" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
-	<header>
+	<!-- <header>
 		<div class="header-container">
 			<div class="logo">
 				<a href="index.php"><img src="./hinh_anh/logomb.png" alt="logo"></a>
@@ -73,10 +74,14 @@
 				echo "<div class='dangnhap'><a href='dangnhap.php'><img src='./hinh_anh/logodangnhap.png' alt='Đăng nhập'></a></div>";
 			}
 			?>
-	</header>
+	</header> -->
+	
+		<?php 
+			require("./header_page.php");
+		?>
 	<div class="container">
 		<main>
-			<div class="banner">
+			<!-- <div class="banner">
 				<div class="slideshow-container">
 
 					<div class="mySlides fade">
@@ -116,12 +121,16 @@
 					<span class="dot" onclick="currentSlide(4)"></span>
 					<span class="dot" onclick="currentSlide(5)"></span>
 				</div>
-			</div>
+			</div> -->
 
+			<?php 
+				require("./hot_sanpham.php");
+			?>
 
 			<?php 
 				require("./card_sanpham.php");
 			?>
+
 		</main>
 
 	</div>

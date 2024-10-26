@@ -77,6 +77,8 @@
 
 <div class="products">
     <?php
+        require("./config.php");
+        $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
         $result = mysqli_query($conn, $sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
