@@ -128,7 +128,7 @@
         max-height: 70vh;
         padding: 10px 0;
         position: fixed;
-        right: 31%;
+        right: 26%;
         top: 55px;
         transform: translateX(235px);
         width: 400px;
@@ -381,8 +381,4 @@
     background.addEventListener('click', function() {
         modal.style.display = 'none';
     });
-
-    // search.addEventListener('input', function() {
-    //     searchForm.submit();
-    // });
 </script>
