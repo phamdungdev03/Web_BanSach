@@ -79,6 +79,8 @@
     <?php
         require("./config.php");
         $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
+        
+        $sql = "SELECT * FROM san_pham";
         $result = mysqli_query($conn, $sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -95,7 +97,6 @@
         <a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
             <h2><?php echo htmlspecialchars($ten); ?></h2>
         </a>
-
         <p><?php echo $parsed_gia ?>₫</p>
         <button>
             <a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>" class="btn">Xem chi tiết</a>

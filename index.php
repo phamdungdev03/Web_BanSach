@@ -27,7 +27,7 @@
 
 	<div class="container">
 		<?php
-		require("./card_sanpham.php");
+		require("./all_sanpham.php");
 		?>
 	</div>
 	<?php 
