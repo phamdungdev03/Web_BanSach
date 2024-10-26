@@ -12,8 +12,6 @@
 
 <body>
   <?php include 'header.php' ?>
-
-  <br><br><br><br> <br>
   <?php
   include 'config.php';
   $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);

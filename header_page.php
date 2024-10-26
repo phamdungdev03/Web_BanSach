@@ -112,8 +112,7 @@
         </div>
         <nav class="header__nav">
             <a href="index.php" class="header__nav-item">Trang chủ</a>
-            <a href="sanpham.php" class="header__nav-item">Kho sách</a>
-            <a class="header__nav-item">Thể loại</a>
+            <a href="danhmucsanpham.php" class="header__nav-item">Thể loại</a>
             <a class="header__nav-item">Liên hệ</a>
             <a class="header__nav-item">Câu hỏi thường gặp</a>
         </nav>
