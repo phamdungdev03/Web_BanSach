@@ -68,7 +68,6 @@
 				</div>
 			</div>
 
-
 			<?php 
 				require("./card_sanpham.php");
 			?>
