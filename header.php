@@ -128,6 +128,7 @@
     <div class="header__search-bar">
         <?php
         include 'config.php';
+        session_start();
         $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
         if (isset($_GET["search1"]) && !empty($_GET["search1"])) {
             $key = mysqli_real_escape_string($conn, trim($_GET["search1"]));
@@ -166,7 +167,6 @@
         </div>
         <div class="header__user-actions">
             <a class="header__nav-item"><i class="fa-regular fa-heart"></i></a>
-            <a href="giohang.php" class="header__nav-item"><i class="fa-solid fa-cart-shopping"></i></a>
             <?php
                 if (isset($_SESSION['username'])) {
                     echo"

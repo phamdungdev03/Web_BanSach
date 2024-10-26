@@ -11,131 +11,27 @@
 </head>
 
 <body>
-	<!-- <header>
-		<div class="header-container">
-			<div class="logo">
-				<a href="index.php"><img src="./hinh_anh/logomb.png" alt="logo"></a>
-			</div>
-			<nav>
-				<ul>
-					<li><a href="index.php">Trang chủ</a></li>
-					<li><a href="sanpham.php">Sản phẩm</a></li>
-					<li><a href="#">Liên hệ</a></li>
-				</ul>
-			</nav>
-			<div>
-				<?php
-				include 'config.php';
-				$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
-
-				if (isset($_GET["search"]) && !empty($_GET["search"])) {
-					$key = trim($_GET["search"]);
-					$sql = "SELECT product_id, product_name, product_image, price 
-				FROM san_pham 
-				WHERE (product_id LIKE '%$key%') 
-					OR (product_name LIKE '%$key%') 
-					OR (product_image LIKE '%$key%') 
-					OR (price LIKE '%$key%');";
-
-					$result = mysqli_query($conn, $sql);
-					if (mysqli_num_rows($result) <= 0) {
-						echo "<script>alert('Không tìm thấy " . $_GET["search"] . " trong tài liệu nào.!');
-						window.location.href = 'index.php';
-						</script>";
-					}
-				} else {
-					$sql = "SELECT * FROM san_pham ORDER BY price DESC LIMIT 8;";
-					$result = mysqli_query($conn, $sql);
-				}
-
-				?>
-				<form action="" method="get">
-					<input type="text" placeholder="Bạn tìm gì....." name="search" value="<?php if (isset($_GET["search"])) {
-																								echo trim($_GET["search"]);
-																							}
-																							?>">
-					<input type="submit" value="Search">
-				</form>
-			</div>
-			<div class="cart">
-				<a href="giohang.php"><img src="./hinh_anh/logogiohang.png" alt="Giỏ hàng"></a>
-			</div>
-
-			<?php
-			session_start();
-			if (isset($_SESSION['username'])) {
-
-				echo "<div><a style='color:#fff; text-decoration: none;
-	  font-weight: bold;'  href='./donhang.php'>Đơn hàng</a></div>";
-				echo "<div><a style='color:#fff; text-decoration: none;
-	  font-weight: bold;'  href='thoat.php'>Đăng xuất</a></div>";
-				echo "<div><p style='color:#fff'>Chào mừng,<br>" . $_SESSION['username'] . "</p></div>";
-			} else {
-				echo "<div class='dangnhap'><a href='dangnhap.php'><img src='./hinh_anh/logodangnhap.png' alt='Đăng nhập'></a></div>";
-			}
-			?>
-	</header> -->
-	
-		<?php 
-			require("./header_page.php");
-		?>
+	<?php
+	session_start();
+	require("./header_page.php");
+	?>
 	<div class="container">
 		<main>
-			<!-- <div class="banner">
-				<div class="slideshow-container">
 
-					<div class="mySlides fade">
-						<img src="./hinh_anh/banner/banner0.gif" style="width:100%;">
-					</div>
+			<?php
 
-					<div class="mySlides fade">
-						<img src="./hinh_anh/banner/banner1.png" style="width:100%">
-					</div>
-
-					<div class="mySlides fade">
-						<img src="./hinh_anh/banner/banner2.png" style="width:100%">
-					</div>
-
-					<div class="mySlides fade">
-						<img src="./hinh_anh/banner/banner3.png" style="width:100%">
-					</div>
-
-					<div class="mySlides fade">
-						<img src="./hinh_anh/banner/banner4.png" style="width:100%">
-					</div>
-
-					<div class="boder-prev">
-						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-					</div>
-					<div class="boder-next">
-						<a class="next" onclick="plusSlides(1)">&#10095;</a>
-					</div>
-
-				</div>
-				<br>
-
-				<div style="text-align:center">
-					<span class="dot" onclick="currentSlide(1)"></span>
-					<span class="dot" onclick="currentSlide(2)"></span>
-					<span class="dot" onclick="currentSlide(3)"></span>
-					<span class="dot" onclick="currentSlide(4)"></span>
-					<span class="dot" onclick="currentSlide(5)"></span>
-				</div>
-			</div> -->
-
-			<?php 
-				require("./hot_sanpham.php");
+			require("./hot_sanpham.php");
 			?>
 
-			<?php 
-				require("./card_sanpham.php");
+			<?php
+			require("./card_sanpham.php");
 			?>
 
 		</main>
 
 	</div>
-	<?php 
-		require("./footer.php");
+	<?php
+	require("./footer.php");
 	?>
 	<script src="script.js">
 	</script>

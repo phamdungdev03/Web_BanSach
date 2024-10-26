@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./giohang.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="shortcut icon" href="./hinh_anh/logomb.png" />
   <title>Giỏ hàng</title>
 </head>
@@ -17,9 +17,6 @@
   <?php
   include 'config.php';
   if (isset($_SESSION['username'])) {
-    if (!isset($_SESSION["cart"])) {
-      $_SESSION["cart"] = array();
-    }
     $error = false;
     $success = false;
     if (isset($_GET['action'])) {
@@ -123,7 +120,7 @@
               addToCart($customer_id, $productID, $quantity);
             }
           }
-          header("location:giohang.php");
+          // header("location:giohang.php");
           break;
         case "delete":
           if (isset($_GET['id']) && isset($_GET['cart_id'])) {
@@ -218,7 +215,6 @@
   ?>
     <br>
     <br>
-    <br><br><br>
     <?php if (!empty($error)) { ?>
       <div style=" margin-left: 245px;" id="notify-msg">
 
