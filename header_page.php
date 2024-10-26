@@ -160,6 +160,9 @@
         <div class="header__user-actions">
             <a class="header__nav-item"><i class="fa-regular fa-heart"></i></a>
             <?php
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
                 if (isset($_SESSION['username'])) {
                     echo"
                             <a href='donhang.php' class='header__nav-item'><i class='fa-solid fa-cart-shopping'></i></a>
