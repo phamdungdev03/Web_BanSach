@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./giohang.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link rel="shortcut icon" href="./hinh_anh/logomb.png" />
+  <link rel="shortcut icon" href="./hinh_anh/logo.png" />
   <title>Giỏ hàng</title>
 </head>
 

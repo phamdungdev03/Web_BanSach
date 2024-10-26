@@ -146,10 +146,6 @@
         </div>
     </section>
     <a style="  text-decoration: none;" href="javascript:history.back()">&#8592; Quay lại</a>
-
-    <footer style="margin-top:400px">
-        <p> Nguyễn Phi Hùng - 10/08/2002</p>
-    </footer>
 </body>
 
 </html>

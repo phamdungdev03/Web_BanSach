@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>Chi tiết sản phẩm</title>
   <link rel="stylesheet" href="./chitietsanpham.css">
-  <link rel="shortcut icon" href="./hinh_anh/logomb.png" />
+  <link rel="shortcut icon" href="./hinh_anh/logo.png" />
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
