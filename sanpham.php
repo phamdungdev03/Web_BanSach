@@ -144,12 +144,11 @@
 				?>
 					<div class="product">
 						<a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
-							<img src="./hinh_anh/didong/<?php echo $anh ?>" alt="iPhone">
+							<img src="./hinh_anh/uploads/<?php echo $anh ?>" alt="sach_image">
 						</a>
 						<a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
 							<h2><?php echo $ten ?></h2>
 						</a>
-
 						<p><?php echo $parsed_gia ?>₫</p>
 						<button>
 							<a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>" class="btn">Xem chi tiết</a>

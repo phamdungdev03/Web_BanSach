@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8">
-<title>Chi tiết sản phẩm</title>
-<link rel="stylesheet" href="./chitietsanpham.css">
-<link rel="shortcut icon" href="./hinh_anh/logomb.png" />
-<link rel="stylesheet" href="./style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+  
 <head>
+  <meta charset="utf-8">
+  <title>Chi tiết sản phẩm</title>
+  <link rel="stylesheet" href="./chitietsanpham.css">
+  <link rel="shortcut icon" href="./hinh_anh/logomb.png" />
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
@@ -52,8 +52,8 @@
               <span id="add">+</span>
             </div>
             <div class="detail-btn">
-              <input type="submit" name="" id="" onclick="addToCart()" value="Thêm vào giỏ hàng">
-              <input type="submit" id="add-to-cart-btn" onclick="addToCart()" value="Mua Ngay">
+              <input type="submit" name="" id="" class="btn_add-cart" onclick="addToCart()" value="Thêm vào giỏ hàng">
+              <input type="submit" id="add-to-cart-btn" class="btn-buy" onclick="addToCart()" value="Mua Ngay">
             </div>
           </form>
         </div>

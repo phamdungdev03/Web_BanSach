@@ -1,23 +1,31 @@
 .order {
-  margin: 20px;
+  margin: 20px auto;
   padding: 20px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
 }
 
 .order h2 {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
-  color: #333;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 2px solid #4CAF50;
+  display: inline-block;
+  padding-bottom: 10px;
 }
 
 table.bangchinh {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .bangchinh th {
@@ -25,31 +33,36 @@ table.bangchinh {
   color: white;
   font-weight: bold;
   text-align: left;
-  padding: 12px;
+  padding: 16px;
+  text-transform: uppercase;
 }
 
 .bangchinh td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
   text-align: left;
   vertical-align: middle;
+  color: #555;
+  transition: background-color 0.2s ease;
 }
 
-.bangchinh tr:hover {
-  background-color: #f1f1f1;
+.bangchinh tr:hover td {
+  background-color: #f8f9fa;
 }
 
 .bangchinh tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #f3f3f3;
 }
 
 .bangchinh a {
   text-decoration: none;
   color: #4CAF50;
-  font-weight: bold;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .bangchinh a:hover {
+  color: #388e3c;
   text-decoration: underline;
 }
 
@@ -57,44 +70,58 @@ table.bangchinh {
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
+  border-radius: 6px;
+  padding: 10px 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .bangchinh button:hover {
-  background-color: #45a049;
+  background-color: #388e3c;
+  transform: translateY(-2px);
+}
+
+.bangchinh button:active {
+  background-color: #2e7d32;
+  transform: translateY(0);
 }
 
 .bangchinh .date {
   font-style: italic;
-  color: #888;
+  color: #999;
 }
 
 .bangchinh .status {
   font-weight: bold;
-  color: #333;
+  border-radius: 4px;
+  padding: 4px 8px;
+  text-align: center;
 }
 
 .bangchinh .status.new {
-  color: #00bcd4;
+  background-color: #00bcd4;
+  color: #fff;
 }
 
 .bangchinh .status.processing {
-  color: #ff9800;
+  background-color: #ff9800;
+  color: #fff;
 }
 
 .bangchinh .status.shipping {
-  color: #3f51b5;
+  background-color: #3f51b5;
+  color: #fff;
 }
 
 .bangchinh .status.completed {
-  color: #4caf50;
+  background-color: #4caf50;
+  color: #fff;
 }
 
 .bangchinh .status.canceled {
-  color: #f44336;
+  background-color: #f44336;
+  color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -103,14 +130,15 @@ table.bangchinh {
   }
 
   .order h2 {
-      font-size: 20px;
+      font-size: 22px;
   }
 
   .bangchinh th, .bangchinh td {
-      padding: 8px;
+      padding: 12px 10px;
   }
 
   .bangchinh button {
-      padding: 6px 10px;
+      padding: 8px 12px;
+      font-size: 12px;
   }
 }

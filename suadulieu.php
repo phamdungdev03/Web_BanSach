@@ -165,7 +165,7 @@
             <label class="label" for="hinhanh">Hình ảnh:</label>
             <input type="hidden" name="hinhanh_cu" value="<?php echo $hinhanh; ?>">
             <input type="file" class="input" name="hinhanh" id="hinhanh">
-            <img src="./hinh_anh/didong/<?php echo $hinhanh; ?>" alt="Preview" class="img-preview">
+            <img src="./hinh_anh/uploads/<?php echo $hinhanh; ?>" alt="Preview" class="img-preview">
         </div>
 
         <div class="buttons">

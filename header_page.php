@@ -157,10 +157,10 @@
             </form>
         </div>
         <div class="header__user-actions">
-            <a class="header__nav-item"><i class="fa-regular fa-heart"></i></a>
             <?php
                 if (isset($_SESSION['username'])) {
                     echo"
+                            <a href='donhang.php' class='header__nav-item'><i class='fa-solid fa-table-list'></i></a>
                             <a href='giohang.php' class='header__nav-item'><i class='fa-solid fa-cart-shopping'></i></a>
                             <p>" . $_SESSION['username'] . "</p>
                             <a  href='thoat.php'  class='header__nav-item'><i class='fa-solid fa-right-from-bracket'></i></a>
