@@ -16,22 +16,26 @@
 	require("./header_page.php");
 	?>
 	<div class="container">
-		<main>
-
-			<?php
-
-			require("./hot_sanpham.php");
-			?>
-
-			<?php
-			require("./card_sanpham.php");
-			?>
-
-		</main>
+		<?php
+		require("./hot_sanpham.php");
+		?>
 
 	</div>
+	<?php 
+		require("./thu_moi.php");
+	?>
+
+	<div class="container">
+		<?php
+		require("./card_sanpham.php");
+		?>
+	</div>
+	<?php 
+		require("./blog_home.php");
+	?>
+
 	<?php
-	require("./footer.php");
+		require("./footer.php");
 	?>
 	<script src="script.js">
 	</script>

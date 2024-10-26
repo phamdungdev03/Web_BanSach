@@ -8,47 +8,14 @@
     <link rel="stylesheet" href="./donhang.css">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="./hinh_anh/logomb.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <title>Đơn hàng</title>
 </head>
 
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.php"><img src="./hinh_anh/logomb.png" alt="logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Trang chủ</a></li>
-                    <li><a href="sanpham.php">Sản phẩm</a></li>
-                    <li><a href="#">Liên hệ</a></li>
-                </ul>
-            </nav>
-
-            <div class="cart">
-                <a href="giohang.php"><img src="./hinh_anh/logogiohang.png" alt="Giỏ hàng"></a>
-            </div>
-
-            <?php
-            session_start();
-            if (isset($_SESSION['username'])) {
-
-                echo "<div><a style='color:#fff; text-decoration: none;
-	  font-weight: bold;'  href='./donhang.html'>Đơn hàng</a></div>";
-                echo "<div><a style='color:#fff; text-decoration: none;
-	  font-weight: bold;'  href='thoat.php'>Đăng xuất</a></div>";
-                echo "<div><p style='color:#fff'>Chào mừng,<br>" . $_SESSION['username'] . "</p></div>";
-            } else {
-                echo "<div class='dangnhap'><a href='dangnhap.php'><img src='./hinh_anh/logodangnhap.png' alt='Đăng nhập'></a></div>";
-            }
-            ?>
-
-    </header>
-    <br><br><br><br>
-    <br><br>
-    <div style="  margin-left:25px;">
-        <a style="  text-decoration: none;" href="index.php">&#8592; Trang chủ</a>
-    </div>
+    <?php 
+        require("./header.php");
+    ?>
 
     <br><br>
     <section>

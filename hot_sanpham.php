@@ -1,6 +1,6 @@
 <style>
     .container__hot-product {
-    padding: 80px 0;
+    margin-top: 80px;
     text-align: center; 
 }
 
@@ -12,7 +12,9 @@
     margin-bottom: 10px; 
     text-transform: uppercase;
 }
-
+.hot__title-item{
+    color: #BA6D4C;
+}
 .container__hot-product p {
     margin-bottom: 30px; 
     color: #666;
@@ -60,7 +62,7 @@
 </style>
 
 <section class="container__hot-product">
-    <h2>Sách mới nhất</h2>
+    <h2>Sách <span class="hot__title-item">mới nhất</span></h2>
     <p>Khám phá bộ sưu tập sách mới nhất của chúng tôi với những tác phẩm nổi bật, hấp dẫn và đầy ý nghĩa.</p>
 
     <?php 

@@ -1,6 +1,6 @@
 <style>
    .container_header {
-    background-image: url("./hinh_anh/banner/banner_header.jpg");
+    background-image: url("./hinh_anh/banner/banner_header.png");
     min-height: 85vh;
     position: relative; 
     background-position: center;
