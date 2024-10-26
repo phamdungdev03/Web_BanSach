@@ -2,6 +2,7 @@
     footer {
         background: #B5DCE8;
         padding: 20px;
+        margin-top: 80px;
     }
 
     .footer_container {

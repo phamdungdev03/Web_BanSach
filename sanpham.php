@@ -7,6 +7,7 @@
 	<title> Trang chủ - Website bán điện thoại di động</title>
 	<link rel="stylesheet" href="./style.css">
 	<link rel="shortcut icon" href="./hinh_anh/logomb.png" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 	<style>
 		.sc {
 			border: 1px solid #ccc;
@@ -20,18 +21,80 @@
 </head>
 
 <body>
-	<!-- <?php include 'header.php'?> -->
+	<header>
+		<div class="header-container">
+			<div class="logo">
+				<a href="index.php"><img src="./hinh_anh/logomb.png" alt="logo"></a>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="index.php">Trang chủ</a></li>
+					<li><a href="sanpham.php">Sản phẩm</a></li>
+					<li><a href="#">Liên hệ</a></li>
+				</ul>
+			</nav>
+			<div>
+				<?php
+				include 'config.php';
+				$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
+				if (isset($_GET["search"]) && !empty($_GET["search"])) {
+					$key = trim($_GET["search"]);
+					$sql = "SELECT product_id, product_name, product_image, price 
+				FROM san_pham 
+				WHERE (product_id LIKE '%$key%') 
+					OR (product_name LIKE '%$key%') 
+					OR (product_image LIKE '%$key%') 
+					OR (price LIKE '%$key%');";
+
+					$result = mysqli_query($conn, $sql);
+					if (mysqli_num_rows($result) <= 0) {
+						echo "<script>alert('Không tìm thấy " . $_GET["search"] . " trong tài liệu nào.!');
+						window.location.href = 'index.php';
+						</script>";
+					}
+				} else {
+					$sql = "SELECT * FROM san_pham ORDER BY price DESC";
+					$result = mysqli_query($conn, $sql);
+				}
+
+				?>
+				<form action="" method="get">
+					<input type="text" placeholder="Bạn tìm gì....." name="search" value="<?php if (isset($_GET["search"])) {
+																								echo trim($_GET["search"]);
+																							} ?>">
+					<input type="submit" value="Search">
+				</form>
+			</div>
+
+			<div class="cart">
+				<a href="giohang.php"><img src="./hinh_anh/logogiohang.png" alt="Giỏ hàng"></a>
+			</div>
+
+			<?php
+			session_start();
+			if (isset($_SESSION['username'])) {
+
+				echo "<div><a style='color:#fff; text-decoration: none;
+	  font-weight: bold;'  href='./donhang.html'>Đơn hàng</a></div>";
+				echo "<div><a style='color:#fff; text-decoration: none;
+	  font-weight: bold;'  href='thoat.php'>Đăng xuất</a></div>";
+				echo "<div><p style='color:#fff'>Chào mừng,<br>" . $_SESSION['username'] . "</p></div>";
+			} else {
+				echo "<div class='dangnhap'><a href='dangnhap.php'><img src='./hinh_anh/logodangnhap.png' alt='Đăng nhập'></a></div>";
+			}
+			?>
+	</header>
 	<div class="container">
 		<main>
 			<!-- <div class="banner">
 				<div class="slideshow-container">
 
 					<div class="mySlides fade">
-						<img src="./hinh_anh/banner/banner0.gif" style="width:100%;">
+						<img src="./hinh_anh/banner/banner0.webp" style="width:100%;">
 					</div>
 
 					<div class="mySlides fade">
-						<img src="./hinh_anh/banner/banner1.png" style="width:100%">
+						<img src="./hinh_anh/banner/banner1.webp" style="width:100%">
 					</div>
 
 					<div class="mySlides fade">
@@ -39,11 +102,11 @@
 					</div>
 
 					<div class="mySlides fade">
-						<img src="./hinh_anh/banner/banner3.png" style="width:100%">
+						<img src="./hinh_anh/banner/banner3.jpg" style="width:100%">
 					</div>
 
 					<div class="mySlides fade">
-						<img src="./hinh_anh/banner/banner4.png" style="width:100%">
+						<img src="./hinh_anh/banner/banner4.webp" style="width:100%">
 					</div>
 
 					<div class="boder-prev">
@@ -67,8 +130,10 @@
 
 			<?php include 'danhmuc.php' ?>
 
-			<!-- <div class="products">
+			<div class="products">
 				<?php
+
+
 				$result = mysqli_query($conn, $sql);
 				while ($row = mysqli_fetch_assoc($result)) {
 					$ma = $row["product_id"];
@@ -93,7 +158,7 @@
 					</div>
 
 				<?php  } ?>
-			</div> -->
+			</div>
 		</main>
 	</div>
 

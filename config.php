@@ -2,6 +2,6 @@
     $DB_HOST = 'localhost';
     $DB_USER = 'root';
     $DB_PASS = '';
-    $DB_NAME = 'hung_mobile';
+    $DB_NAME = 'qlbs';
     $HOST = 3366;
 ?>

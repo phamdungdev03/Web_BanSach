@@ -38,7 +38,7 @@
       </a>
     </div>
     <div class="product-info">
-      <img src="./hinh_anh/didong/<?php echo $anh ?>" alt="">
+      <img src="./hinh_anh/uploads/<?php echo $anh ?>" alt="">
       <div class="product-info-detail">
         <p class="product-info-title"><?php echo $ten ?></p>
         <div class="product-info-review">
@@ -100,7 +100,7 @@
       ?>
         <div class="product">
           <a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
-            <img src="./hinh_anh/didong/<?php echo $anh ?>" alt="iPhone">
+            <img src="./hinh_anh/uploads/<?php echo $anh ?>" alt="sach_img">
           </a>
           <a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
             <h2><?php echo $ten ?></h2>

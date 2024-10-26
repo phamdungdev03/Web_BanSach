@@ -31,15 +31,14 @@ body {
 
 }
 
-header {
+/* header {
   position: fixed;
   background-color: rgb(255, 49, 49);
   left: 0;
   right: 0;
   text-align: center;
   z-index: 999;
-
-}
+} */
 /* 
 input[type=text] {
   padding: 10px;
