@@ -143,32 +143,33 @@
                 echo "<script>alert('Không tìm thấy " . $_GET["search1"] . " trong tài liệu nào.!');
                             window.location.href = 'index.php';
                             </script>";
-            }
-        } else {
-            $sql = "SELECT * FROM san_pham ORDER BY price DESC LIMIT 8;";
-            $result = mysqli_query($conn, $sql);
-        }
-        ?>
-        <form method="get" class="search-container">
-            <input class="search-input" type="text" name="search1" placeholder="Bạn cần tìm gì ..." value="<?php if (isset($_GET["search1"])) {
-                                                                                                                echo trim($_GET["search1"]);
-                                                                                                            }
-                                                                                                            ?>" />
-            <button type="submit" class="search-button">
-                <svg class="search-icon" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                        stroke-linejoin="round" stroke-linecap="round"></path>
-                </svg>
-            </button>
-        </form>
-    </div>
-    <div class="header__user-actions">
-        <a class="header__nav-item"><i class="fa-regular fa-heart"></i></a>
-        <?php
-        if (isset($_SESSION['username'])) {
-            echo "
+                    }
+                } else {
+                    $sql = "SELECT * FROM san_pham ORDER BY price DESC LIMIT 8;";
+                    $result = mysqli_query($conn, $sql);
+                }
+            ?>
+            <form method="get" class="search-container">
+                <input class="search-input" type="text" name="search1" placeholder="Bạn cần tìm gì ..." value="<?php if (isset($_GET["search1"])) {
+                                                                                            echo trim($_GET["search1"]);
+                                                                                        }
+                                                                                        ?>" />
+                <button type="submit" class="search-button">
+                    <svg class="search-icon" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                            stroke-linejoin="round" stroke-linecap="round"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+        <div class="header__user-actions">
+            <a class="header__nav-item"><i class="fa-regular fa-heart"></i></a>
+            <a href="giohang.php" class="header__nav-item"><i class="fa-solid fa-cart-shopping"></i></a>
+            <?php
+                if (isset($_SESSION['username'])) {
+                    echo"
                             <a href='donhang.php' class='header__nav-item'><i class='fa-solid fa-cart-shopping'></i></a>
                             <p>" . $_SESSION['username'] . "</p>
                             <a  href='thoat.php'  class='header__nav-item'><i class='fa-solid fa-right-from-bracket'></i></a>
