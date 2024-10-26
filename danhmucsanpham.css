@@ -1,0 +1,61 @@
+/* css danh muc */
+.category {
+    margin-left: 20px;
+    padding: 20px 0;
+    height: 100%;
+    width: 100%;
+}
+
+.category ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.category-list {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.category-item a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.category-item a:hover {
+    background-color: aqua;
+}
+
+/* css danhmucsanpham */
+.content {
+    padding-top: 80px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.content-left {
+    width: 30%;
+    background-color: rgb(247, 247, 247);
+    height: 100%;
+    border-radius: 10px;
+}
+
+.content-center {
+    width: 70%;
+    padding-left: 10px;
+}
+
+.category-title{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 0;
+}
