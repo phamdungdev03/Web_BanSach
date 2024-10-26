@@ -28,36 +28,30 @@
   }
 
   ?>
-  <div class="product container">
-    <div class="navigate-home">
-      <a href="index.php">
-        <i class="fa-solid fa-left-long"></i>
-        Trang chủ
-      </a>
-    </div>
-    <div class="product-info">
+  <div class="detail container">
+    <div class="detail-info">
       <img src="./hinh_anh/uploads/<?php echo $anh ?>" alt="">
-      <div class="product-info-detail">
-        <p class="product-info-title"><?php echo $ten ?></p>
-        <div class="product-info-review">
+      <div class="detail-info-detail">
+        <p class="detail-info-title"><?php echo $ten ?></p>
+        <div class="detail-info-review">
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
         </div>
-        <div class="product-info-price">
+        <div class="detail-info-price">
           <p class="old-price"><?php echo $parsed_gia ?></p>
           <p class="new-price"><?php echo $parsed_gia ?></p>
         </div>
-        <div class="product-info-quantity">
+        <div class="detail-info-quantity">
           <form action="giohang.php?action=add" method="POST">
-            <div class="product-info-quantity__number">
+            <div class="detail-info-quantity__number">
               <span id="prev">-</span>
               <input type="number" id="quantity" value="1" name="quantity[<?php echo $ma ?>]">
               <span id="add">+</span>
             </div>
-            <div class="product-btn">
+            <div class="detail-btn">
               <input type="submit" name="" id="" onclick="addToCart()" value="Thêm vào giỏ hàng">
               <input type="submit" id="add-to-cart-btn" onclick="addToCart()" value="Mua Ngay">
             </div>
@@ -65,11 +59,11 @@
         </div>
       </div>
     </div>
-    <div class="product-description">
-      <div class="product-description-title">
+    <div class="detail-description">
+      <div class="detail-description-title">
         <span>Mô Tả</span>
       </div>
-      <div class="product-description-content">
+      <div class="detail-description-content">
         <p><?php echo $mota ?></p>
       </div>
     </div>
@@ -87,30 +81,8 @@
       <?php
       $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $HOST);
       $sql = "SELECT * From san_pham";
-
-      $result = mysqli_query($conn, $sql);
-      while ($row = mysqli_fetch_assoc($result)) {
-        $ma = $row["product_id"];
-        $ten = $row["product_name"];
-        $anh = $row["product_image"];
-        $gia = $row["price"];
-        $parsed_gia = number_format($gia, 0, ",", ",");
+      require('./card_sanpham.php')
       ?>
-        <div class="product">
-          <a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
-            <img src="./hinh_anh/uploads/<?php echo $anh ?>" alt="sach_img">
-          </a>
-          <a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>">
-            <h2><?php echo $ten ?></h2>
-          </a>
-          <p><?php echo $parsed_gia ?>₫</p>
-          <button>
-            <a href="./chitietsanpham.php?product_id=<?php echo $ma; ?>" class="btn">Xem chi tiết</a>
-          </button>
-
-        </div>
-
-      <?php  } ?>
     </div>
   </div>
   </main>

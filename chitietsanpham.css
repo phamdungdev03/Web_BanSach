@@ -1,65 +1,59 @@
 
-.product{
-  margin-bottom: 50px;
+.detail{
+  margin-bottom: 50px !important;
+  margin-top: 20px !important;
 }
 
-.navigate-home{
-  margin: 10px 0 20px 0;
-}
-
-.navigate-home a{
-  text-decoration: none;
-}
-
-.product-info{
+.detail-info{
   display: flex;
+  gap: 30px;
 }
 
-.product-info img{
+.detail-info img{
   width: 300px;
 }
 
-.product-info-detail{
+.detail-info-detail{
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.product-info-title{
+.detail-info-title{
   font-size: 20px;
   font-weight: 600;
 }
 
-.product-info-review i{
+.detail-info-review i{
   color: rgb(236, 236, 108);
   font-size: 14px;
 }
 
-.product-info-price{
+.detail-info-price{
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.product-info-price .new-price{
+.detail-info-price .new-price{
   color: red;
   font-size: 18px;
   font-weight: 600;
 }
 
-.product-info-price .old-price{
+.detail-info-price .old-price{
   font-size: 16px;
   font-weight: 500;
   text-decoration: line-through;
 }
 
-.product-btn{
+.detail-btn{
   display: flex;
   gap: 10px;
   margin-top: 20px;
 }
 
-.product-btn input{
+.detail-btn input{
   border-radius: 10px;
   outline: none;
   font-weight: 600;
@@ -69,11 +63,11 @@
   cursor: pointer;
 }
 
-.product-description{
+.detail-description{
   margin: 30px 0 50px 0;
 }
 
-.product-description-title{
+.detail-description-title{
   text-align: center;
   font-size: 18px;
   font-weight: 600;
@@ -82,17 +76,17 @@
   margin-bottom: 10px;
 }
 
-.product-description-content{
+.detail-description-content{
   line-height: 1.5;
 }
 
-.product-info-quantity__number{
+.detail-info-quantity__number{
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.product-info-quantity__number input{
+.detail-info-quantity__number input{
   width: 30px;
   text-align: center;
   padding: 2px 0;
@@ -100,7 +94,7 @@
   border: none;
 }
 
-.product-info-quantity__number span{
+.detail-info-quantity__number span{
   border: 1px solid gray;
   padding: 2px 10px;
   border-radius: 5px;

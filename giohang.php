@@ -128,14 +128,14 @@
             $cart_id = intval($_GET['cart_id']);
             deleteCart($cart_id, $cart_item_id);
           }
-          header("location:giohang.php");
+          // header("location:giohang.php");
           break;
         case "edit":
           $cart_item_id = intval($_POST['cart_item_id']);
           $quantity = intval($_POST['quantity']);
           $product_id = intval($_POST['product_id']);
           updateCart($cart_item_id, $product_id, $quantity);
-          header("location:giohang.php");
+          // header("location:giohang.php");
           break;
         case "submit":
           if (isset($_POST['order_click'])) {
@@ -229,80 +229,85 @@
       </div>
     <?php
     } else { ?>
-      <a href="index.php" style=" margin-left: 245px;   text-decoration: none;">&larr; Trang chủ</a>
-      <br><br>
-      <div id="cart">
-
-        <h2>Giỏ hàng của bạn</h2>
+      <div id="cart" class="container">
+        <div class="cart-head">
+          <p>Giỏ hàng của bạn</p>
+          <span>
+            <?php
+            if ($result && mysqli_num_rows($result) > 0) {
+              $totalProducts = mysqli_num_rows($result);
+              echo "<strong>$totalProducts</strong> sản phẩm";
+            }
+            ?>
+          </span>
+        </div>
         <form action="giohang.php?action=submit" method="POST">
-          <table align="center">
-            <thead>
-              <tr>
-                <th>STT</th>
-                <th>Tên sản phẩm</th>
-                <th>Hình ảnh</th>
-                <th>Giá</th>
-                <th>Số lượng</th>
-                <th>Thành tiền</th>
-              </tr>
-            </thead>
-            <tbody>
+          <div class="cart-left">
+            <div class="cart-title">
+              <div class="cart-title-title">
+                <p>Sản Phẩm</p>
+              </div>
+              <div class="cart-title-content">
+                <p>Giá</p>
+                <p>Số lượng</p>
+                <p>Tổng tiền</p>
+              </div>
+            </div>
+            <div class="cart-content">
               <?php
               if ($result && mysqli_num_rows($result) > 0) {
                 $total = 0;
-                $index = 1;
                 while ($row = mysqli_fetch_array($result)) {   ?>
-                  <tr>
-                    <td><?= $index; ?></td>
-                    <td><?= $row["product_name"] ?></td>
-                    <td><img src="./hinh_anh/didong/<?= $row["product_image"] ?>" alt=""></td>
-                    <td class="gia"><?= number_format($row["price"], 0, ",", ","); ?>₫</td>
-                    <td class="countdown">
-                      <span id="prev" data-product_id="<?= $row["product_id"] ?>" data-cart-id="<?= $row["id"] ?>">-</span>
-                      <input id="quantity" name="quantity" type="number" min="1" value="<?= $row["quantity"] ?>" data-product_id="<?= $row["product_id"] ?>" data-cart-id="<?= $row["id"] ?>">
-                      <span id="add" data-product_id="<?= $row["product_id"] ?>" data-cart-id="<?= $row["id"] ?>">+</span>
-                    </td>
-                    <input type="hidden" name="cart_id" value="<?= $row["cart_id"] ?>">
-                    <input type="hidden" name="product_id" value="<?= $row["product_id"] ?>">
-                    <input type="hidden" name="id" value="<?= $row["id"] ?>">
-                    <td class="gia"><?= number_format($row["quantity"] * $row["price"], 0, ",", ","); ?>₫</td>
-                    <td><a href="giohang.php?action=delete&id=<?= $row["id"] ?>&cart_id=<?= $row["cart_id"] ?>" style="text-decoration: none;">
-                        <div class="remove">Xóa</div>
-                      </a></td>
-                  </tr>
+                  <div class="cart-item">
+                    <div class="cart-item-left">
+                      <img src="./hinh_anh/uploads/<?= $row["product_image"] ?>" alt="">
+                      <p><?= $row["product_name"] ?></p>
+                    </div>
+                    <div class="cart-item-center">
+                      <span class="cart-item-center__price"><?= number_format($row["price"], 0, ",", ","); ?>₫</span>
+                      <div class="cart-item-center__quantity">
+                        <span id="prev" data-product_id="<?= $row["product_id"] ?>" data-cart-id="<?= $row["id"] ?>">-</span>
+                        <input id="quantity" name="quantity" type="number" min="1" value="<?= $row["quantity"] ?>" data-product_id="<?= $row["product_id"] ?>" data-cart-id="<?= $row["id"] ?>">
+                        <span id="add" data-product_id="<?= $row["product_id"] ?>" data-cart-id="<?= $row["id"] ?>">+</span>
+                      </div>
+                      <span class="cart-item-center__total"><?= number_format($row["quantity"] * $row["price"], 0, ",", ","); ?>₫</span>
+                    </div>
+                    <a class="cart-remove" href="giohang.php?action=delete&id=<?= $row["id"] ?>&cart_id=<?= $row["cart_id"] ?>" style="text-decoration: none;">
+                      <i class="fa-solid fa-trash"></i>
+                    </a>
+                  </div>
+                  <hr>
                 <?php
                   $total += $row["quantity"] * $row["price"];
-                  $index++;
                 }
                 ?>
-            </tbody>
-
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <p>Tổng tiền: <span class="gia"><?= $parsed_gia = number_format($total, 0, ",", ","); ?>₫</span></p>
-              </td>
-              <td></td>
-
-            </tr>
-          <?php
-              }
-
-          ?>
-          </table>
-
-      </div>
-      <div class="total">
-        <input type="text" name="ten" placeholder="Người nhận" />
-        <input type="text" name="sdt" placeholder="Số điện thoại" />
-        <input type="text" name="diachicuthe" placeholder="Địa chỉ cụ thể" />
-        <input type="email" name="email" placeholder="Email" />
-        <input class="checkout" type="submit" name="order_click" value="Đặt hàng">
-        <!-- <button class="checkout">Tiến hành đặt hàng</button> -->
+              <?php } ?>
+            </div>
+          </div>
+          <div class="cart-center">
+            <?php
+            if ($result && mysqli_num_rows($result) > 0) {
+            ?>
+              <div class="cart-detail">
+                <p>Thông tin đơn hàng</p>
+                <span>Số lượng: <strong><?php echo $totalProducts; ?></strong> sản phẩm</span>
+                <span>Tổng số tiền: <strong><?php echo number_format($total, 0, ',', '.'); ?>đ</strong></span>
+              </div>
+              <hr>
+            <?php
+            }
+            ?>
+            <div class="cart-shipping">
+              <p>Thông tin nhận hàng</p>
+              <div class="cart-shipping-input">
+                <input type="text" name="ten" placeholder="Người nhận" />
+                <input type="text" name="sdt" placeholder="Số điện thoại" />
+                <input type="text" name="diachicuthe" placeholder="Địa chỉ cụ thể" />
+                <input type="email" name="email" placeholder="Email" />
+              </div>
+              <input class="checkout" type="submit" name="order_click" value="Đặt hàng">
+            </div>
+          </div>
       </div>
       </form>
       <form id="updateCartForm" action="giohang.php?action=edit" method="POST" style="display:none;">
@@ -310,9 +315,9 @@
         <input type="hidden" name="product_id" id="hiddenProductId">
         <input type="hidden" name="quantity" id="hiddenQuantity">
       </form>
-      <div align="center" style="margin: 30px 0">
+      <!-- <div align="center" style="margin: 30px 0">
         <button class="buttont" onclick="addToT()">Thêm sản phẩm khác</button>
-      </div>
+      </div> -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
       <script>
@@ -330,7 +335,7 @@
   }
   ?>
   <script>
-    document.querySelectorAll('.countdown').forEach(countdown => {
+    document.querySelectorAll('.cart-item-center__quantity').forEach(countdown => {
       const prev = countdown.querySelector('#prev');
       const add = countdown.querySelector('#add');
       const quantityInput = countdown.querySelector('#quantity');
