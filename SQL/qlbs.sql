@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3366
--- Thời gian đã tạo: Th10 26, 2024 lúc 03:59 PM
+-- Thời gian đã tạo: Th10 28, 2024 lúc 01:55 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -380,6 +380,51 @@ VALUES (
         45000,
         50,
         10
+    ),
+    (
+        49,
+        'Càng Bình Tĩnh Càng Hạnh Phúc',
+        'Càng Bình Tĩnh Càng Hạnh Phúc\r\n\r\nTiếp nối thành công rực rỡ của Bạn đắt giá bao nhiêu?, Khí chất bao nhiêu hạnh phúc bấy nhiêu, Không sợ chậm chỉ sợ dừng,… Vãn Tình đã quay trở lại cùng cuốn sách Càng bình tĩnh Càng hạnh phúc. Đây là cuốn sách thứ bảy của cô được xuất bản tại Việt Nam bởi thương hiệu sách Bloom Books, đánh dấu cho hành trình trưởng thành đầy rực rỡ của Vãn Tình – từ một cô gái trẻ trung, mạnh mẽ trở nên chín chắn, điềm tĩnh và bao dung hơn với cuộc đời.\r\n\r\nGần bảy mươi câu chuyện trong sách xoay quanh các chủ đề tình yêu, hôn nhân, gia đình, sự nghiệp… đến từ chính cuộc sống của tác giả và những người xung quanh, vừa thực tế lại vừa gợi mở, dễ dàng giúp chúng ta liên hệ với tình huống của chính mình. Với những câu chuyện đó, Vãn Tình hy vọng có thể giúp các cô gái trưởng thành, độc lập và tự tin hơn, tìm lại bản ngã và sống cuộc đời theo cách mà mình mong muốn.\r\n\r\nThông điệp xuyên suốt trong “Càng bình tĩnh Càng hạnh phúc” mà Vãn Tình muốn gửi gắm tới độc giả là:\r\n\r\n“Bảy năm trước tôi sẽ cãi vã với người ta khi phật ý, bảy năm sau tôi tuân thủ câu nói ‘Bận rộn là liều thuốc trị mọi chứng bệnh tâm lý.’\r\n\r\nBảy năm trước tôi luôn chuẩn bị cẩn thận cho mọi ngày lễ, bảy năm sau tôi bận tới mức quên cả bản thân mình chứ đừng nói tới ngày lễ gì.\r\n\r\nBảy năm trước, chú cún nhà tôi qua đời, bảy năm sau, tôi không còn nuôi cún nữa.\r\n\r\nBảy năm đủ để một phụ nữ ngây ngô trở nên chín chắn, ngây thơ trở nên lý trí, và xốc nổi trở nên bình tĩnh ung dung, dần dần tìm thấy ý nghĩa của cuộc đời mình.\r\n\r\nKhông biết bảy năm sau tôi sẽ như thế nào.”\r\n\r\nCòn bạn, bảy năm trước bạn là ai?\r\n\r\nVà bảy năm sau, bạn muốn trở thành một người như thế nào?\r\n\r\nTrích dẫn hay của Vãn Tình trong Càng bình tĩnh Càng hạnh phúc:\r\n\r\n“Phồn hoa tựa gấm, hào quang bốn phương đều có thể từ bỏ, nhưng chân tình đâu dễ gì có được.\r\n\r\nTôi muốn nói với mọi người rằng: ‘Có người yêu thương chúng ta là một điều tuyệt vời, nhưng nếu không có ai yêu thương chúng ta, chúng ta phải yêu thương bản thân mình gấp bội. Cuộc đời này ít người ‘trong tuyết đưa than’, mà đa phần là ‘dệt hoa trên gấm’, bởi vậy hãy biến bản thân thành ‘gấm’ trước đã!”\r\n\r\n“Người ta sống trên đời khó tránh nhất là một chữ ‘Tình’, không ai có thể làm lơ tình yêu, nhưng đời người đã có quá nhiều tiếc nuối và bất lực, khiến trái tim yếu mềm của chúng ta chịu nhiều giày vò khi phải đối mặt với vô vàn đau khổ và mất mát.\r\n\r\nNếu để cho phụ nữ trong chốn hồng trần này lựa chọn giữa quyền lực, tiền bạc và tình yêu chân thành, có lẽ mọi người đều muốn có được một tấm chân tình, chỉ ước sao được làm cô gái yếu mềm của người ấy.”\r\n\r\n“Chúng ta thường nói, sự khẳng định lớn nhất của một người đàn ông dành cho một người phụ nữ là cưới cô ấy về nhà. Nhưng tôi muốn nói rằng: ‘Sự khẳng định lớn nhất của một người phụ nữ dành cho bản thân mình chính là nắm bắt cuộc sống mình mong muốn một cách phóng khoáng ung dung.’”',
+        '1730119737_VanTinh.webp',
+        139000,
+        50,
+        8
+    ),
+    (
+        50,
+        'Đất Nước Gấm Hoa - Atlas Việt Nam',
+        'Việt Nam chúng ta kết tinh của lịch sử hào hùng, thiên nhiên tươi đẹp cùng sức sáng tạo vô biến của con người và giờ đây chúng ta đang có ĐẤT NƯỚC GẤM HOA\r\n\r\nViệt Nam là một đất nước xinh đẹp với nhiều vùng văn hóa khác nhau. Với mong muốn mang đến nhũng kiến thức về địa lí, lịch sử, văn hóa và con người một cách dễ nhớ và gần gũi, “Đất nước gấm hoa” giúp bạn đọc nhiều độ tuổi có cái nhìn thật cụ thể và sống động về 63 tỉnh thành trên dải đất hình chữ S của chúng ta.\r\n\r\nLỜI GIỚI THIỆU\r\n\r\n“Quê nhà mình ở đâu trên bản đồ Việt Nam?\r\n\r\nNơi mình sinh ra và lớn lên có điều gì đặc biệt?\r\n\r\nBạn biết không, đất nước của chúng mình đẹp lắm. Từ những dòng thác tung bọt trắng xóa vùng Tây Bắc đến dòng Cửu Long chở nặng phù sa miền Tây Nam Bộ, từ núi rừng bao la nơi sinh sống của nhiều loài động vật quí hiếm đến vùng hải đảo nơi có những giàn khoan tung bay lá cờ đỏ sao vàng, từ những miền đất cổ kính với bề dày lịch sử đến các thành phố trẻ trung tràn đầy sức sống… tất cả hội tụ trên dải đất hình chữ S tươi đẹp, như một di sản tuyệt vời qua hàng ngàn năm dựng nước và giữ nước mà giờ đây cha ông trao lại cho chúng mình. Hành trình đi dọc theo đất nước từ Bắc vào Nam, lên rừng xuống biển cũng là hành trình khám phá nền văn hóa đặc sắc và đa dạng của cộng đồng 54 dân tộc anh em.\r\n\r\nDù chúng mình đang ở nơi đâu trên dải đất hình chữ S, thì bạn và tôi luôn hiểu rằng con đường mình đang đi, món ăn mình đang thưởng thức, công trình mình đang chiêm ngưỡng đều mang theo dấu ấn của lịch sử, của tinh hoa văn hóa đúc kết từ bao đời. 63 tỉnh thành là 63 vùng đất với vị trí địa lí khác nhau, địa hình, dân tộc, bản sắc văn hóa vì thế cũng chứa đựng những dấu ấn riêng. Tất cả tạo nên những hoa văn đặc sắc, vừa khác biệt, vừa hòa quyện vào nhau, tạo nên vẻ đẹp lung linh của đất nước gấm hoa.\r\n\r\nVới mong muốn mang đến một quyển sách chứa đựng kiến thức về địa lí, lịch sử, văn hóa, con người thật gần gũi đến bạn đọc nhiều độ tuổi, đặc biệt mong muốn các bạn học sinh có cái nhìn cụ thể và sống động về mỗi vùng đất, mỗi tỉnh thành trên bản đồ Việt Nam, ê kíp thực hiện đã dành tất cả tâm huyết cho quyển Atlas này. Trong từng dòng thông tin, từng hình vẽ, từng mảng màu đều thấm đượm tình yêu đất nước và niềm tự hào là người con của quê hương xứ sở. ĐẤT NƯỚC GẤM HOA – ATLAS VIỆT NAM, cuộc hành trình khám phá 63 bản đồ tỉnh thành đã ra đời với thật nhiều cảm xúc như thế.\r\n\r\nNhóm tác giả rất mong nhận được sự đóng góp ý kiến từ bạn đọc để nội dung quyển sách được hoàn thiện hơn nữa.\r\n\r\nCòn bây giờ, chuyến tàu xuyên suốt dải đất hình chữ S sắp sửa khởi hành. Mời bạn sẵn sàng cho kì du lịch thú vị nhất để khám phá đất nước Việt Nam tươi đẹp. Bắt đầu nào!”',
+        '1730119791_8935244873306.webp',
+        350000,
+        50,
+        9
+    ),
+    (
+        52,
+        'Tip Công Sở 2 - Khả Năng Đặt Câu Hỏi',
+        'Giao tiếp là quá trình trao đổi và truyền đạt ý nghĩ, tình cảm giữa người với người. Đặt câu hỏi là một trong những mắt xích cơ bản nhất của quá trình giao tiếp và nó đóng vai trò quyết định hiệu quả giao tiếp. Một người biết cách đặt câu hỏi sẽ không làm cho người nghe rơi vào trình trạng không rõ người hỏi đang hỏi về cái gì, không biết trả lời thế nào; mà ngược lại, anh ta có thể khiến người nghe ngay lập tức nắm bắt chính xác chủ đề câu hỏi và dẫn dắt cuộc trò chuyện được tiếp tục.\r\n\r\nMuốn đối phương đón được bóng, trước hết bạn phải chuyền cho anh ta một đường bóng đẹp; tương tự, muốn nhận được câu trả lời có giá trị, trước tiên phải đưa ra câu hỏi thích hợp với người trả lời.\r\n\r\nĐặt câu hỏi là quá trình cân nhắc cả hai phía, người hỏi không chỉ phải nêu rõ vấn đề mà còn có vai trò dẫn dắt cuộc trò chuyện. Vì vậy, người đặt câu hỏi xuất sắc là người có thể “vận hành hệ thống kép”: một là trau chuốt câu hỏi của mình sao cho nổi bật trọng tâm và có tính logic; hai là phải quan tâm đến mong muốn và trải nghiệm của đối phương, dẫn dắt cuộc trò chuyện được tiếp tục. Việc “vận hành hệ thống kép” này ban đầu sẽ tương đối khó khăn, nhưng chỉ cần thực hành nhiều lần, nó sẽ trở nên dễ dàng như một thói quen.\r\n\r\nCuốn sách bạn đang cầm trên tay chính là cuốn cẩm năng tuyệt vời giúp chúng ta có được những phương thức hỏi thật hiệu quả. Từng nội dung trong sách được minh họa sinh đọng và hấp dẫn, trong niềm hứng thú, người đọc sẽ nhanh chóng nắm bắt được các phương pháp hỏi súc tích và thông minh nhất.',
+        '1730119927_image_220086.webp',
+        97000,
+        50,
+        9
+    ),
+    (
+        53,
+        'Take Note - Kiến Thức Toán Và Dạng Toán 3',
+        'Take Note - Kiến Thức Toán Và Dạng Toán 3\r\n\r\nTake note Sổ tay kiến thức và dạng toán 3 là nguồn tư liệu hữu ích dành cho học sinh lớp 3, với các chương Toán với nhiều chủ đề được biên soạn theo chương trình giáo dục quốc gia. Với tổng cộng 11 chương, mỗi chương được biên soạn một cách tỉ mỉ và logic, sách cung cấp cho các em những dạng bài tập thường gặp trong học tập, kèm theo ví dụ minh họa và lời giải chi tiết, chắc chắn sẽ giúp các em vững vàng kiến thức, tự tin đạt điểm cao trong các kỳ thi.\r\n\r\nƯu điểm của cuốn sách: Take note Sổ tay kiến thức và dạng toán 3\r\n\r\n- Bám sát chương trình giáo dục: Cuốn sách được thiết kế theo chương trình của Bộ Giáo dục, bổ sung lý thuyết, kiến thức căn bản một cách bài bản, dễ hiểu, dễ vận dụng.\r\n\r\n- Đưa ra các dạng bài tập thường gặp kèm ví dụ minh họa và lời giải chi tiết: Giúp học sinh nắm vững kiến thức, hiểu bài dễ dàng hơn và rèn luyện kỹ năng giải bài tập toán.\r\n\r\n- Hình ảnh sinh động: Hình vẽ dễ thương và sinh động hỗ trợ việc học tập, làm cho nội dung trở nên gần gũi và thú vị hơn đối với học sinh.',
+        '1730119992_b_a-in-takenote-kt-to_n-v_-d_ng-to_n-3_1.webp',
+        79000,
+        50,
+        9
+    ),
+    (
+        54,
+        'Kết Nối',
+        'Mạng xã hội tạo cho chúng ta áp lực phải tích cực hóa mọi chuyện. Bạn có thể đăng lên Facebook bức ảnh tươi cười trước tháp Eiffel, nhưng không ai biết thực tế chuyến đi đó đối với bạn khủng khiếp như thế nào.\r\n\r\nHàng trăm người theo dõi qua Instagram sẽ biết bạn gọi món gì trong bữa tối sang trọng tuần trước, nhưng chỉ những người có mối quan hệ đặc biệt với bạn mới biết bạn đang phải vật lộn với căn bệnh tiêu hóa suốt nhiều năm nay, hoặc biết trong bữa tối đó, bạn và người yêu đã bàn đến chuyện cùng nhau xây dựng tổ ấm hoặc cân nhắc những được mất của quyết định nghỉ việc.\r\n\r\nĐây chắc chắn là những chủ đề mà bạn sẽ không bao giờ đề cập với những người bạn trung học đã lâu không gặp hoặc những người đồng nghiệp chỉ thân thiết ở mức xã giao; đương nhiên, chúng cũng không phải là chủ đề thích hợp để trò chuyện cùng người cô mà bạn đến thăm hằng tuần. Nhưng những người có mối quan hệ đặc biệt với bạn sẽ biết điều gì đang thực sự xảy ra chỉ đơn giản vì họ hiểu bạn.\r\n\r\nCác mối quan hệ nằm trải dài trên một thang đo nhiều mức độ. Ở những mức độ thấp nhất, điều tồn tại giữa bạn và người kia là chỉ là mối liên hệ chứ không phải là sự kết nối. Nhưng khi mối quan hệ nằm ở đầu bên kia thang đo, bạn sẽ cảm thấy an toàn, được thấu hiểu, hỗ trợ, động viên và chấp nhận. Ở phần giữa thang đo, đó sẽ là những người cho bạn cảm giác gắn kết, nhưng trong số đó bạn chỉ muốn kết nối sâu sắc với một vài người. Câu hỏi đặt ra ở đây là: Làm thế nào để mối quan hệ của bạn với ai đó có thể tiến đến đầu bên kia của thang đo?',
+        '1730120050_k_t-n_i---b_a-1.webp',
+        220000,
+        50,
+        8
     );
 -- --------------------------------------------------------
 --
@@ -504,7 +549,7 @@ MODIFY `customer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Mã khác
 --
 ALTER TABLE `san_pham`
 MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Mã sản phẩm',
-    AUTO_INCREMENT = 49;
+    AUTO_INCREMENT = 55;
 --
 -- AUTO_INCREMENT cho bảng `vai_tro`
 --
